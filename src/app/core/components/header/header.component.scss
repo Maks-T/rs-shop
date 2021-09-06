@@ -6,17 +6,28 @@
 }
 
 .header__fist-line {
+  display: flex;
+  align-items: center;
   width: 100%;
   border-bottom: 1px solid rgba(213, 215, 219, 0.4);
   height: 40px;
 
   .header__fist-line-wrapper {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    flex-direction: row;
     min-width: 941px;
     max-width: 1090px;
     margin: 0 auto;
     padding: 0 2.2%;
+
+    .header__fist-line-right {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+    }
   }
 }
 
@@ -47,4 +58,37 @@
     margin: 0 auto;
     padding: 0 2.2%;
   }
+}
+
+.btn-location {
+  padding-left: 15px;
+  background: url("../../../../assets/icons/location.svg") left center no-repeat;
+  border: none;
+  outline: none;
+}
+
+.nav-communcation {
+  display: flex;
+
+  &__contact {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding-left: 25px;
+    margin-left: 20px;
+  }
+
+  &__viber-contact {
+    background: url("../../../../assets/icons/viber.svg") left center no-repeat;
+  }
+
+  &__a1-contact {
+    background: url("../../../../assets/icons/a1.svg") left center no-repeat;
+  }
+}
+
+.time-working {
+  margin-left: 10px;
+  font-size: 10px;
+  color: gray;
 }
