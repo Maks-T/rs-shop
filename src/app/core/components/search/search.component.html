@@ -1,0 +1,16 @@
+<div class="search-panel">
+  <button class="search-panel__icon-search"></button>
+  <input
+    class="search-panel__input-search"
+    type="text"
+    placeholder="What are you want to find out?"
+    [(ngModel)]="inputSearchText"
+    (keydown.enter)="clickBtnSearch()"
+    #searchInput
+  />
+  <button
+    *ngIf="inputSearchText"
+    class="search-panel__clear"
+    (click)="clearSearchText()"
+  ></button>
+</div>

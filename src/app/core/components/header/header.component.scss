@@ -32,13 +32,17 @@
 }
 
 .header__second-line {
+  display: flex;
+  align-items: center;
   width: 100%;
   border-bottom: 1px solid rgba(213, 215, 219, 0.4);
   height: 90px;
 
   .header__second-line-wrapper {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
+    flex-direction: row;
     min-width: 941px;
     max-width: 1090px;
     margin: 0 auto;
@@ -91,4 +95,43 @@
   margin-left: 10px;
   font-size: 10px;
   color: gray;
+}
+
+.logo {
+  width: 126px;
+  height: 24px;
+
+  background: url("../../../../assets/icons/logo.png") left center no-repeat;
+  background-size: cover;
+}
+
+.catalog {
+  border: 1px solid #d5d7db;
+  display: flex;
+  align-items: center;
+  min-width: 161px;
+  height: 42px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 40px;
+  margin-left: 10px;
+  margin-right: 5px;
+
+  background-color: #f7f8fa;
+
+  padding-left: 40px;
+
+  background: url("../../../../assets/icons/catalog.png") left center no-repeat;
+  background-size: contain;
+
+  transition: 0.2s ease;
+
+  &:hover {
+    border: none;
+
+    background: white url("../../../../assets/icons/catalog_hover.png") left
+      center no-repeat;
+    background-size: contain;
+    box-shadow: 4px 1px 8px -3px rgba(34, 60, 80, 0.2);
+  }
 }
