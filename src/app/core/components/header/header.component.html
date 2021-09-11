@@ -20,8 +20,15 @@
 <div class="header__second-line">
   <div class="header__second-line-wrapper">
     <a class="logo" href="#"></a>
-    <a class="catalog">Каталог товаров</a>
+    <button
+      class="catalog"
+      (click)="showCatalog = !showCatalog"
+      [ngClass]="{ active: showCatalog }"
+    >
+      Каталог товаров
+    </button>
     <app-search></app-search>
   </div>
 </div>
 <div class="header__third-line"></div>
+<app-catalog-popup *ngIf="showCatalog"></app-catalog-popup>

@@ -1,4 +1,6 @@
 .search-panel {
+  position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,13 +18,13 @@
     border: none;
     outline: none;
     background-color: transparent;
-    background: url("../../../../assets/icons/search-active.svg") center center
+    background: url("../../../../assets/icons/search.svg") center center
       no-repeat;
     background-size: contain;
   }
 
   :hover &__icon-search {
-    background: url("../../../../assets/icons/search.svg") center center
+    background: url("../../../../assets/icons/search-active.svg") center center
       no-repeat;
     background-size: contain;
   }
@@ -48,5 +50,41 @@
     padding-left: 10px;
     border: none;
     outline: none;
+  }
+
+  &__search-menu {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    width: 490px;
+
+    padding: 10px;
+    border-radius: 6px;
+
+    background: white;
+
+    box-shadow: -4px 1px 25px -3px rgba(0, 0, 0, 0.55);
+  }
+
+  &__search-item {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 10px;
+    border-radius: 4px;
+    height: 50px;
+    width: 95%;
+    line-height: 22px;
+    border-bottom: 1px solid gray;
+  }
+
+  &__search-item:hover {
+    opacity: 0.9;
+    background-color: rgb(149, 39, 137);
+    color: white;
+    font-weight: bold;
+
+    transition: 0.2ms;
   }
 }

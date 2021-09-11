@@ -135,3 +135,12 @@
     box-shadow: 4px 1px 8px -3px rgba(34, 60, 80, 0.2);
   }
 }
+
+.active,
+.active:hover {
+  background: #d5d7db url("../../../../assets/icons/catalog_active.png") left
+    center no-repeat;
+  background-size: contain;
+
+  color: #909399;
+}

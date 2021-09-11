@@ -1,0 +1,25 @@
+<div class="catalog-popup-wrap">
+  <div class="catalog-popup">
+    <div class="catalog-popup__category-list">
+      <a
+        class="catalog-popup__category-item"
+        *ngFor="let item of categories"
+        href="#"
+        (mouseover)="itemFocused(item)"
+      >
+        {{ item.name }}
+      </a>
+    </div>
+    <div class="catalog-popup__subcategory-list">
+      <div class="catalog-popup__subcategory-item-name">
+        {{ currentCategoryItemName }}
+      </div>
+      <a
+        class="catalog-popup__subcategory-item"
+        *ngFor="let subitem of currentCategoryItem"
+      >
+        {{ subitem.name }}</a
+      >
+    </div>
+  </div>
+</div>

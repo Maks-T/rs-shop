@@ -13,4 +13,9 @@
     class="search-panel__clear"
     (click)="clearSearchText()"
   ></button>
+  <div class="search-panel__search-menu" *ngIf="foods$ | async">
+    <a class="search-panel__search-item" *ngFor="let food of foods$ | async"
+      >{{ food.name }}
+    </a>
+  </div>
 </div>
