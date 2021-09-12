@@ -1,0 +1,11 @@
+<ngb-carousel *ngIf="foods">
+  <ng-template ngbSlide *ngFor="let food of foods">
+    <a class="slide" href="#">
+      <div class="left-side">
+        <h2>{{ food.name }}</h2>
+        <div class="price">цена: {{ food.price }}</div>
+      </div>
+      <div class="right-side"><img [src]="food.imageUrls[0]" /></div>
+    </a>
+  </ng-template>
+</ngb-carousel>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ICategory } from '../../models/categories';
+import { CatalogService } from '../../services/catalog.service';
 
 @Component({
   selector: 'app-header',
@@ -6,13 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  categories: ICategory[] = [];
   currentLocation: string = 'Минск';
   showCatalog: boolean = false;
 
-  constructor() {}
+  constructor(private catalogService: CatalogService) {}
 
   ngOnInit(): void {
     this.currentLocation = this.getLocationCity();
+    this.catalogService.fetchCategories().subscribe((categories) => {
+      this.categories = categories;
+    });
   }
 
   getLocationCity(): string {

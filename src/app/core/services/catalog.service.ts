@@ -9,12 +9,20 @@ import { IFood } from '../models/food';
   providedIn: 'root',
 })
 export class CatalogService {
+  private categories$: Observable<ICategory[]> | null = null;
+
   constructor(public http: HttpClient) {}
 
   public fetchCategories(): Observable<ICategory[]> {
+    if (this.categories$) {
+      return this.categories$;
+    }
+
     const url = `http://localhost:3004/categories`;
 
-    return this.http.get<ICategory[]>(url).pipe(take(1));
+    this.categories$ = this.http.get<ICategory[]>(url).pipe(take(1));
+
+    return this.categories$;
   }
 
   public searchFoods(query: string): Observable<IFood[]> {

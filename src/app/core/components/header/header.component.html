@@ -30,5 +30,15 @@
     <app-search></app-search>
   </div>
 </div>
-<div class="header__third-line"></div>
+<div class="header__third-line">
+  <div class="header__third-line-wrapper">
+    <ul class="category-menu">
+      <li class="category-item" *ngFor="let item of categories">
+        <a class="category-link" href="#">
+          {{ item.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
 <app-catalog-popup *ngIf="showCatalog"></app-catalog-popup>
