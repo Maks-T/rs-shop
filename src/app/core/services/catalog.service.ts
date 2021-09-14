@@ -30,4 +30,13 @@ export class CatalogService {
 
     return this.http.get<IFood[]>(url).pipe(take(1));
   }
+
+  public fetchFoodsBySubCategory(
+    categoryId: string,
+    subCategoryId: string
+  ): Observable<IFood[]> {
+    const url = `http://localhost:3004/goods/category/${categoryId}/${subCategoryId}`;
+
+    return this.http.get<IFood[]>(url).pipe(take(1));
+  }
 }

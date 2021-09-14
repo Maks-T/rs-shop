@@ -1,0 +1,23 @@
+<div class="subcategory">
+  <div class="subcategory-wrapper" *ngIf="category">
+    <div>
+      <a
+        class="category-name"
+        [routerLink]="['/category']"
+        [queryParams]="{ categoryId: categoryId }"
+      >
+        {{ categoryName }}
+      </a>
+      <span> >> </span>
+      <a
+        class="subcategory-name"
+        [routerLink]="['/subcategory']"
+        [queryParams]="{ categoryId: categoryId, subCategoryId: subCategoryId }"
+      >
+        {{ subCategoryName }}
+      </a>
+    </div>
+
+    <app-food-card *ngFor="let food of foods" [food]="food"></app-food-card>
+  </div>
+</div>

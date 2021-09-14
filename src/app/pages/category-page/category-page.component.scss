@@ -1,0 +1,19 @@
+.category {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-top: 60px;
+  border-bottom: 1px solid rgba(213, 215, 219, 0.4);
+
+  .category-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+
+    min-width: 941px;
+    max-width: 1090px;
+    margin: 0 auto;
+    padding: 0 2.2%;
+  }
+}

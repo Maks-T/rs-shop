@@ -18,6 +18,8 @@ export class CatalogPopupComponent implements OnInit, OnDestroy {
 
   currentCategoryItemName: string = '';
 
+  currentCategoryItemId: string = '';
+
   constructor(private catalogService: CatalogService) {}
 
   ngOnInit(): void {
@@ -28,6 +30,7 @@ export class CatalogPopupComponent implements OnInit, OnDestroy {
       console.log(categories);
       this.categories = categories;
       this.currentCategoryItemName = categories[0].name;
+      this.currentCategoryItemId = categories[0].id;
       this.currentCategoryItem = categories[0].subCategories;
     });
   }
@@ -40,5 +43,6 @@ export class CatalogPopupComponent implements OnInit, OnDestroy {
   itemFocused(item: ICategory): void {
     this.currentCategoryItemName = item.name;
     this.currentCategoryItem = item.subCategories;
+    this.currentCategoryItemId = item.id;
   }
 }

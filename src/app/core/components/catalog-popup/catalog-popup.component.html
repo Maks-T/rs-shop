@@ -6,6 +6,8 @@
         *ngFor="let item of categories"
         href="#"
         (mouseover)="itemFocused(item)"
+        [routerLink]="['/category']"
+        [queryParams]="{ categoryId: item.id }"
       >
         {{ item.name }}
       </a>
@@ -17,6 +19,11 @@
       <a
         class="catalog-popup__subcategory-item"
         *ngFor="let subitem of currentCategoryItem"
+        [routerLink]="['/subcategory']"
+        [queryParams]="{
+          categoryId: currentCategoryItemId,
+          subCategoryId: subitem.id
+        }"
       >
         {{ subitem.name }}</a
       >

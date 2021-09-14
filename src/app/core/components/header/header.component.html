@@ -34,7 +34,11 @@
   <div class="header__third-line-wrapper">
     <ul class="category-menu">
       <li class="category-item" *ngFor="let item of categories">
-        <a class="category-link" href="#">
+        <a
+          class="category-link"
+          [routerLink]="['/category']"
+          [queryParams]="{ categoryId: item.id }"
+        >
           {{ item.name }}
         </a>
       </li>
