@@ -8,6 +8,8 @@ import { IFood } from 'src/app/core/models/food';
 })
 export class FoodCardComponent implements OnInit {
   @Input() food!: IFood;
+  @Input() categoryId!: string;
+  @Input() subCategoryId!: string;
 
   constructor() {}
 

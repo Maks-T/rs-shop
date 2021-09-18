@@ -10,6 +10,7 @@ import { SubcategoryPageComponent } from './subcategory-page/subcategory-page.co
 import { FoodCardComponent } from './components/food-card/food-card.component';
 import { AmountPipe } from './pipes/amount.pipe';
 import { FoodPageComponent } from './food-page/food-page.component';
+import { FoodSliderComponent } from './components/food-slider/food-slider.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FoodPageComponent } from './food-page/food-page.component';
     FoodCardComponent,
     AmountPipe,
     FoodPageComponent,
+    FoodSliderComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +31,7 @@ import { FoodPageComponent } from './food-page/food-page.component';
       { path: '', component: MainPageComponent },
       { path: 'category', component: CategoryPageComponent },
       { path: 'subcategory', component: SubcategoryPageComponent },
+      { path: 'food', component: FoodPageComponent },
     ]),
   ],
   exports: [RouterModule, AmountPipe],

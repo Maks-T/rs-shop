@@ -39,4 +39,10 @@ export class CatalogService {
 
     return this.http.get<IFood[]>(url).pipe(take(1));
   }
+
+  public fetchFoodById(foodId: string): Observable<IFood> {
+    const url = `http://localhost:3004/goods/item/${foodId}`;
+
+    return this.http.get<IFood>(url).pipe(take(1));
+  }
 }

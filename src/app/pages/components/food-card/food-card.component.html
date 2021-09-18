@@ -1,6 +1,16 @@
 <div class="card-food">
   <img class="card-food__img" [src]="food.imageUrls[0]" />
-  <div class="card-food__name">{{ food.name }}</div>
+  <div class="card-food__name">
+    <a
+      [routerLink]="['/food']"
+      [queryParams]="{
+        foodId: food.id,
+        categoryId: categoryId,
+        subCategoryId: subCategoryId
+      }"
+      >{{ food.name }}</a
+    >
+  </div>
   <div class="card-food__availableAmount">
     {{ food.availableAmount | amount }}
   </div>

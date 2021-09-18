@@ -11,11 +11,12 @@ import { CatalogService } from 'src/app/core/services/catalog.service';
 })
 export class FoodPageComponent implements OnInit {
   category?: ICategory;
-  categoryName = '';
-  subCategoryName = '';
-  categoryId = '';
-  subCategoryId = '';
-  foods: IFood[] = [];
+  categoryName: string = '';
+  subCategoryName: string = '';
+  categoryId: string = '';
+  subCategoryId: string = '';
+  foodId: string = '';
+  food!: IFood;
 
   constructor(
     private catalogService: CatalogService,
@@ -26,6 +27,7 @@ export class FoodPageComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.categoryId = params['categoryId'];
       this.subCategoryId = params['subCategoryId'];
+      this.foodId = params['foodId'];
 
       this.catalogService.fetchCategories().subscribe((categories) => {
         this.category = categories.find(
@@ -41,11 +43,9 @@ export class FoodPageComponent implements OnInit {
         }
       });
 
-      this.catalogService
-        .fetchFoodsBySubCategory(this.categoryId, this.subCategoryId)
-        .subscribe((foods) => {
-          this.foods = foods;
-        });
+      this.catalogService.fetchFoodById(this.foodId).subscribe((food) => {
+        this.food = food;
+      });
     });
   }
 }

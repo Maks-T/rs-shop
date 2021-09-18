@@ -19,7 +19,12 @@
     </div>
 
     <div class="foods-wrapper">
-      <app-food-card *ngFor="let food of foods" [food]="food"></app-food-card>
+      <app-food-card
+        *ngFor="let food of foods"
+        [food]="food"
+        [categoryId]="categoryId"
+        [subCategoryId]="subCategoryId"
+      ></app-food-card>
     </div>
   </div>
 </div>

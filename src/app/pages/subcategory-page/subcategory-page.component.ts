@@ -11,10 +11,10 @@ import { CatalogService } from 'src/app/core/services/catalog.service';
 })
 export class SubcategoryPageComponent implements OnInit {
   category?: ICategory;
-  categoryName = '';
-  subCategoryName = '';
-  categoryId = '';
-  subCategoryId = '';
+  categoryName: string = '';
+  subCategoryName: string = '';
+  categoryId: string = '';
+  subCategoryId: string = '';
   foods: IFood[] = [];
 
   constructor(
