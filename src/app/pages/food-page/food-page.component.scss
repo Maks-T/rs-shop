@@ -1,4 +1,4 @@
-.subcategory {
+.food {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,7 +7,7 @@
   padding-top: 60px;
   border-bottom: 1px solid rgba(213, 215, 219, 0.4);
 
-  .subcategory-wrapper {
+  .food__menu {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,21 +18,5 @@
     max-width: 1090px;
     margin: 0 auto;
     padding: 0 2.2%;
-  }
-
-  .foods-wrapper {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    flex-direction: row;
-  }
-
-  app-food-card {
-    margin: 10px 0 0 10px;
-
-    &:hover {
-      box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-    }
   }
 }
