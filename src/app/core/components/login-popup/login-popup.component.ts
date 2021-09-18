@@ -1,16 +1,30 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IUserLogin } from '../../models/user';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { IUserLogin } from '../../models/user-login';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login-popup',
   templateUrl: './login-popup.component.html',
   styleUrls: ['./login-popup.component.scss'],
 })
-export class LoginPopupComponent implements OnInit {
+export class LoginPopupComponent implements OnInit, OnDestroy {
+  destroyed$ = new Subject<boolean>();
+
   @Output() showLoginFormFalse: EventEmitter<void> = new EventEmitter<void>();
 
-  public email = new FormControl('', [Validators.required, Validators.email]);
+  public login = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2),
+  ]);
 
   public password = new FormControl('', [
     Validators.required,
@@ -19,20 +33,22 @@ export class LoginPopupComponent implements OnInit {
 
   public form!: FormGroup;
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.form = new FormGroup({ email: this.email, password: this.password });
-    /* if (this.authService.isLogin) {
-        this.router.navigate(['search']);
-      }*/
+    this.form = new FormGroup({ login: this.login, password: this.password });
   }
 
-  public getEmailErrorMessage(): string {
-    if (this.email.hasError('required')) {
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.complete();
+  }
+
+  public getLoginErrorMessage(): string {
+    if (this.login.hasError('required')) {
       return 'You must enter a value';
     }
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.login.hasError('login') ? 'Not a valid login' : '';
   }
 
   public getPasswordErrorMessage(): string {
@@ -45,10 +61,14 @@ export class LoginPopupComponent implements OnInit {
   public onSubmit(): void {
     if (this.form.valid) {
       const formData: IUserLogin = this.form.value;
-      /* if (this.authService.checkLoginData(formData)) {
-        this.router.navigate(['search']);
-      }*/
+      this.userService.loginIn(formData);
     }
+    this.userService.isLogin$
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((isLogin) => {
+        if (isLogin) this.clickBtnClose();
+        console.log('subscribe isLogin in loginPopup', Math.random() * 10000);
+      });
   }
 
   clickBtnClose() {

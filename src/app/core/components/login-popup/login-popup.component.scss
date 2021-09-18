@@ -39,7 +39,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    height: 50vh;
+    height: 60vh;
     width: 40vw;
     border-radius: 10px;
     padding: 30px;
@@ -71,6 +71,7 @@
   mat-form-field {
     height: 60px;
     width: 75%;
+    margin-top: 20px;
   }
 
   input {
@@ -81,6 +82,7 @@
 
   mat-error {
     color: red;
+    font-size: 12px;
     margin-top: 20px;
   }
 }

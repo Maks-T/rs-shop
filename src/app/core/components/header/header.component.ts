@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   currentLocation: string = 'Минск';
   showCatalog: boolean = false;
   showLoginInfo: boolean = false;
-  showLoginForm: boolean = true;
+  showLoginForm: boolean = false;
 
   constructor(private catalogService: CatalogService) {}
 

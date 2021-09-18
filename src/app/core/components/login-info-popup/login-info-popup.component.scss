@@ -19,7 +19,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100px;
+    flex-wrap: nowrap;
+    width: 100%;
     height: 100%;
 
     .login-info__avatar {
@@ -31,6 +32,13 @@
       background: url("../../../../assets/icons/avatar.svg") center no-repeat;
       background-size: cover;
       margin: 20px;
+    }
+
+    .login-info__user-name {
+      display: inline-block;
+      font-size: 22px;
+
+      color: #002eac;
     }
 
     .login-info__btn-login {
@@ -53,12 +61,39 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      .login-info__cart-info {
+      .login-info__cart-info,
+      .login-info__favorite-info {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
         height: 30px;
+        text-decoration: none;
+        cursor: pointer;
+
+        .login-info__cart-info-count,
+        .login-info__favorite-info-count {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          width: 1.5rem;
+          height: 1.5rem;
+
+          margin-left: 15px;
+          border-radius: 50%;
+          background-color: #0077cc;
+          color: white;
+          font-weight: 700;
+        }
+      }
+      .login-info__cart-info:hover,
+      .login-info__favorite-info:hover {
+        color: #c90570;
       }
 
-      .login-info__favorite-info {
-        height: 30px;
+      .login-info__cart-info:hover .login-info__cart-info-count,
+      .login-info__favorite-info:hover .login-info__favorite-info-coun {
+        background-color: #c90570;
       }
     }
   }

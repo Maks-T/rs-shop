@@ -3,17 +3,18 @@
     <h2>Вход</h2>
     <div class="btn-close" (click)="clickBtnClose()"></div>
     <mat-form-field appearance="fill">
-      <mat-label>Enter your email</mat-label>
+      <mat-label>Enter your login</mat-label>
       <input
-        name="email"
+        name="login"
         matInput
-        type="email"
-        placeholder="your@mail.com"
+        type="text"
+        placeholder="Warner"
         required
         autofocus
-        formControlName="email"
+        formControlName="login"
+        value="Warner"
       />
-      <mat-error *ngIf="email.invalid">{{ getEmailErrorMessage() }}</mat-error>
+      <mat-error *ngIf="login.invalid">{{ getLoginErrorMessage() }}</mat-error>
     </mat-form-field>
     <br />
     <mat-form-field appearance="fill">
@@ -22,8 +23,10 @@
         name="password"
         matInput
         type="password"
+        placeholder="ea"
         required
         formControlName="password"
+        value="ea"
       />
 
       <mat-error *ngIf="password.invalid">{{
