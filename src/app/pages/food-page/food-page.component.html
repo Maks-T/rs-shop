@@ -17,10 +17,20 @@
         {{ subCategoryName }}
       </a>
     </div>
-
+    <h1 class="food__name">{{ food.name }}</h1>
     <div class="food__content">
-      <h1 class="food__name">{{ food.name }}</h1>
-      <app-food-slider [imageUrls]="food.imageUrls"></app-food-slider>
+      <div class="food__content-left-side">
+        <app-food-slider [imageUrls]="food.imageUrls"></app-food-slider>
+
+        <div class="food__description">
+          <div class="food__description-title">Описание товара:</div>
+          <div class="food__description-info">{{ food.description }}</div>
+        </div>
+      </div>
+      <div class="food__content-right-side">
+        <a class="btn-inFavorite">В избранное</a>
+        <button class="btn-inCart">В корзину</button>
+      </div>
     </div>
   </div>
 </div>

@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   inputSearchText = '';
 
-  foods$!: Observable<IFood[]> | null;
+  foods: IFood[] = [];
 
   @ViewChild('searchInput', { static: true }) searchInput!: ElementRef;
 
@@ -35,7 +35,12 @@ export class SearchComponent implements OnInit, OnDestroy {
         takeUntil(this.destroyed$)
       )
       .subscribe((searchText: string) => {
-        this.foods$ = this.catalogService.searchFoods(searchText);
+        this.catalogService
+          .searchFoods(searchText)
+          .pipe(takeUntil(this.destroyed$))
+          .subscribe((foods) => {
+            this.foods = foods;
+          });
       });
   }
 
@@ -48,6 +53,6 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   clearSearchText(): void {
     this.inputSearchText = '';
-    this.foods$ = null;
+    this.foods = [];
   }
 }

@@ -53,27 +53,41 @@
   }
 
   .btn-inCart {
-    display: flex;
-    justify-content: center;
-
-    align-items: center;
-    box-sizing: border-box;
-    width: 170px;
-    height: 52px;
-    margin: 10px;
-    background-color: #ea1653;
-    color: white;
-    font-weight: bolder;
-    border: none;
+    display: inline-block;
+    width: 140px;
+    height: 41px;
+    line-height: 41px;
+    margin: 0;
+    padding: 0;
+    line-height: 41px;
+    font-size: 14px;
+    background: #ea1653;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
     outline: none;
+    border: 0;
+
+    &:hover {
+      background-color: #d80944;
+    }
   }
 
   .btn-inFavorite {
-    text-decoration: underline;
-    background-color: transparent;
     color: #0072bc;
-    font-weight: bolder;
-    border: none;
+    border-bottom: 1px dotted rgba(0, 114, 188, 0.5);
+    cursor: pointer;
+    pointer-events: auto;
+    line-height: 18px;
+    text-decoration: none;
+    background-color: transparent;
+
     outline: none;
+
+    &:hover {
+      color: #bc1242;
+      text-shadow: none;
+    }
   }
 }

@@ -102,6 +102,19 @@
   }
 }
 
+.header__popup-wrapper {
+  position: relative;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  min-width: 941px;
+  max-width: 1090px;
+  margin: 0 auto;
+  padding: 0 2.2%;
+}
+
 .btn-location {
   padding-left: 15px;
   background: url("../../../../assets/icons/location.svg") left center no-repeat;
@@ -143,7 +156,7 @@
   background-size: cover;
 }
 
-.catalog {
+.btn-catalog {
   border: 1px solid #d5d7db;
   display: flex;
   align-items: center;
@@ -174,10 +187,67 @@
   }
 }
 
-.active,
-.active:hover {
+.btn-catalog.active,
+.btn-catalog.active:hover {
   background: #d5d7db url("../../../../assets/icons/catalog_active.png") left
     center no-repeat;
+  background-size: contain;
+
+  color: #909399;
+}
+
+.login-info-container {
+  position: relative;
+  z-index: 1001;
+}
+
+app-login-info-popup {
+  z-index: 1001;
+}
+
+.btn-login {
+  border: 1px solid #d5d7db;
+  display: flex;
+  align-items: center;
+  min-width: 140px;
+  height: 42px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 40px;
+  margin-left: 10px;
+  margin-right: 5px;
+
+  background-color: #f7f8fa;
+
+  padding-left: 40px;
+  padding-right: 40px;
+
+  background: url("../../../../assets/icons/exit.svg") left center no-repeat,
+    url("../../../../assets/icons/triangle.png") right center no-repeat;
+  background-size: contain;
+
+  color: black;
+
+  transition: 0.2s ease;
+
+  &:hover {
+    border: none;
+    background-color: white;
+    background: url("../../../../assets/icons/exit_hover.svg") left center
+        no-repeat,
+      url("../../../../assets/icons/triangle_hover.png") right center no-repeat;
+    box-shadow: 4px 1px 8px -3px rgba(34, 60, 80, 0.2);
+    background-size: contain;
+    color: #d62761;
+  }
+}
+
+.btn-login.active,
+.btn-login.active:hover {
+  background-color: #d5d7db;
+  background: url("../../../../assets/icons/exit_active.svg") left center
+      no-repeat,
+    url("../../../../assets/icons/triangle_active.png") right center no-repeat;
   background-size: contain;
 
   color: #909399;

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IFood } from 'src/app/core/models/food';
+import { CartService } from 'src/app/core/services/cart.service';
 
 @Component({
   selector: 'app-food-card',
@@ -11,7 +12,13 @@ export class FoodCardComponent implements OnInit {
   @Input() categoryId!: string;
   @Input() subCategoryId!: string;
 
-  constructor() {}
+  constructor(public cartService: CartService) {}
 
   ngOnInit(): void {}
+
+  addFoodToCart(id: string) {
+    this.cartService.addFoodToCart(id).subscribe((mes) => {
+      console.log('mes add to cart   :   ', mes);
+    });
+  }
 }

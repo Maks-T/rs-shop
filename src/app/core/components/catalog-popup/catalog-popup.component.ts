@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ICategory, ISubCategory } from '../../models/categories';
@@ -10,6 +16,9 @@ import { CatalogService } from '../../services/catalog.service';
   styleUrls: ['./catalog-popup.component.scss'],
 })
 export class CatalogPopupComponent implements OnInit, OnDestroy {
+  @Output() showCatalogPopupFalse: EventEmitter<void> =
+    new EventEmitter<void>();
+
   destroyed$ = new Subject<boolean>();
 
   categories: ICategory[] = [];
@@ -44,5 +53,9 @@ export class CatalogPopupComponent implements OnInit, OnDestroy {
     this.currentCategoryItemName = item.name;
     this.currentCategoryItem = item.subCategories;
     this.currentCategoryItemId = item.id;
+  }
+
+  clickPopup() {
+    this.showCatalogPopupFalse.emit();
   }
 }

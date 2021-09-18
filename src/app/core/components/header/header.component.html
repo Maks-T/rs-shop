@@ -21,13 +21,30 @@
   <div class="header__second-line-wrapper">
     <a class="logo" href="#"></a>
     <button
-      class="catalog"
+      class="btn-catalog"
       (click)="showCatalog = !showCatalog"
       [ngClass]="{ active: showCatalog }"
     >
       Каталог товаров
     </button>
     <app-search></app-search>
+    <div class="login-info-container">
+      <app-login-info-popup
+        *ngIf="showLoginInfo"
+        (showLoginInfoFalse)="getShowLoginInfoFalse()"
+      ></app-login-info-popup>
+      <app-login-popup
+        *ngIf="showLoginForm"
+        (showLoginFormFalse)="getShowLoginFormFalse()"
+      ></app-login-popup>
+    </div>
+    <button
+      class="btn-login"
+      (click)="showLoginInfo = !showLoginInfo"
+      [ngClass]="{ active: showLoginInfo }"
+    >
+      Аккаунт
+    </button>
   </div>
 </div>
 <div class="header__third-line">
@@ -45,4 +62,9 @@
     </ul>
   </div>
 </div>
-<app-catalog-popup *ngIf="showCatalog"></app-catalog-popup>
+<div class="header__popup-wrapper">
+  <app-catalog-popup
+    *ngIf="showCatalog"
+    (showCatalogPopupFalse)="getCatalogPopupFalse()"
+  ></app-catalog-popup>
+</div>

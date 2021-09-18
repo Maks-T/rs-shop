@@ -1,14 +1,13 @@
 :host {
-  position: relative;
-}
-.catalog-popup-wrap {
   position: absolute;
   left: 0;
   top: 0;
+}
+.catalog-popup-wrap {
   z-index: 1000;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100vw;
   min-height: 60vh;
 }
@@ -21,7 +20,7 @@
   min-width: 941px;
   max-width: 1090px;
 
-  background: yellow;
+  background: rgb(255, 255, 211);
 
   &__category-list {
     padding: 5px;

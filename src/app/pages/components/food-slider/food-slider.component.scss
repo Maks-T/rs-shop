@@ -1,7 +1,6 @@
-ngb-carousel {
-  position: absolute;
-  top: 70px;
-  left: 0;
+::ng-deep ngb-carousel {
+  position: static;
+
   width: 90%;
 
   border: 1px dashed #dfbfdf;
@@ -14,7 +13,7 @@ ngb-carousel {
   align-items: center;
   justify-content: center;
   padding: 20px 80px 20px 60px;
-  width: 60%;
+  width: 90%;
   height: 350px;
   font-size: 24px;
   color: black;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ICategory } from '../../models/categories';
@@ -13,6 +13,8 @@ export class HeaderComponent implements OnInit {
   categories: ICategory[] = [];
   currentLocation: string = 'Минск';
   showCatalog: boolean = false;
+  showLoginInfo: boolean = false;
+  showLoginForm: boolean = true;
 
   constructor(private catalogService: CatalogService) {}
 
@@ -25,5 +27,18 @@ export class HeaderComponent implements OnInit {
 
   getLocationCity(): string {
     return 'Минск';
+  }
+
+  getShowLoginInfoFalse() {
+    this.showLoginInfo = false;
+    this.showLoginForm = true;
+  }
+
+  getShowLoginFormFalse() {
+    this.showLoginForm = false;
+  }
+
+  getCatalogPopupFalse() {
+    this.showCatalog = false;
   }
 }

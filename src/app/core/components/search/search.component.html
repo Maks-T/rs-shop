@@ -13,8 +13,17 @@
     class="search-panel__clear"
     (click)="clearSearchText()"
   ></button>
-  <div class="search-panel__search-menu" *ngIf="foods$ | async">
-    <a class="search-panel__search-item" *ngFor="let food of foods$ | async"
+  <div class="search-panel__search-menu" *ngIf="foods.length">
+    <a
+      class="search-panel__search-item"
+      *ngFor="let food of foods"
+      [routerLink]="['/food']"
+      [queryParams]="{
+        foodId: food.id,
+        categoryId: food.category,
+        subCategoryId: food.subCategory
+      }"
+      (click)="foods = []"
       >{{ food.name }}
     </a>
   </div>

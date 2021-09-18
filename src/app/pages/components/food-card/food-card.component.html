@@ -21,6 +21,6 @@
       *ngFor="let i of [].constructor(food.rating)"
     ></div>
   </div>
-  <button class="btn-inCart">В корзину</button>
-  <button class="btn-inFavorite">Добавить в избранное</button>
+  <button class="btn-inCart" (click)="addFoodToCart(food.id)">В корзину</button>
+  <a class="btn-inFavorite">Добавить в избранное</a>
 </div>
