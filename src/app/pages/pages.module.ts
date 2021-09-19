@@ -12,6 +12,7 @@ import { AmountPipe } from './pipes/amount.pipe';
 import { FoodPageComponent } from './food-page/food-page.component';
 import { FoodSliderComponent } from './components/food-slider/food-slider.component';
 import { FavoritePageComponent } from './favorite-page/favorite-page.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FavoritePageComponent } from './favorite-page/favorite-page.component';
     FoodPageComponent,
     FoodSliderComponent,
     FavoritePageComponent,
+    FilterPipe,
   ],
   imports: [
     CommonModule,

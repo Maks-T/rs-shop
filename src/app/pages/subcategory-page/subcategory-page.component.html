@@ -1,6 +1,6 @@
 <div class="subcategory">
   <div class="subcategory-wrapper" *ngIf="category">
-    <div>
+    <div class="subcategory__menu">
       <a
         class="category-name"
         [routerLink]="['/category']"
@@ -18,9 +18,30 @@
       </a>
     </div>
 
+    <div class="subcategory__filter-panel">
+      сортировать:
+      <a
+        class="subcategory__filter-panel-rating"
+        (click)="changeTypeSort(TypeSort.rating)"
+        [ngStyle]="{
+          textDecoration: typeSort === TypeSort.rating ? 'none' : 'underline'
+        }"
+      >
+        популярности</a
+      >
+      <a
+        class="subcategory__filter-panel-price"
+        (click)="changeTypeSort(TypeSort.price)"
+        [ngStyle]="{
+          textDecoration: typeSort === TypeSort.price ? 'none' : 'underline'
+        }"
+      >
+        цене</a
+      >
+    </div>
     <div class="foods-wrapper">
       <app-food-card
-        *ngFor="let food of foods"
+        *ngFor="let food of foods | filter: typeSort"
         [food]="food"
         [categoryId]="categoryId"
         [subCategoryId]="subCategoryId"
