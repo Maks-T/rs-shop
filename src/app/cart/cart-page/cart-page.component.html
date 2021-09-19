@@ -1,53 +1,55 @@
 <div class="cart-page">
   <div class="cart-page__wrapper">
-    <div class="cart-page__title">Оформление заказа</div>
-    <div class="cart-page__title-list" *ngIf="foods.length">Список товаров</div>
-    <hr />
-    <table *ngIf="foods.length">
-      <tr>
-        <th>Товар</th>
-        <th>Описание</th>
-        <th>Количество</th>
-        <th>Стоимость</th>
-      </tr>
-      <tr *ngFor="let food of foods; let i = index">
-        <td>
-          <div class="table__food-info">
-            <img class="table__food-img" [src]="food.imageUrls[0]" />
-            <div class="table__food-name">{{ food.name }}</div>
-          </div>
-        </td>
-        <td>
-          <div class="table__food-desc">{{ food.description }}</div>
-        </td>
-        <td>
-          <div class="table__food-count">
-            <button (click)="decreaseCountFood(i)">-</button
-            ><input type="text" readonly value="{{ items[i].amount }}" /><button
-              (click)="increaseCountFood(i)"
-            >
-              +
-            </button>
-          </div>
-        </td>
-        <td>
-          <div class="table__food-cost">
-            {{ food.price * items[i].amount }} руб.
-          </div>
-        </td>
-      </tr>
-    </table>
-    <button
-      class="btn-ckeck-order"
-      *ngIf="isShowBtnCheckOrder"
-      (click)="
-        isShowFormOrder = !isShowFormOrder;
-        isShowBtnCheckOrder = !isShowBtnCheckOrder
-      "
-    >
-      Оформить заказ
-    </button>
-
+    <div class="cart-page__message-empty-cart" *ngIf="!foods.length">Ваша корзина пуста :-(</div>
+    <div class="cart-page__wrapper-check-order" *ngIf="foods.length">
+      <div class="cart-page__title">Оформление заказа</div>
+      <div class="cart-page__title-list">Список товаров</div>
+      <hr />
+      <table>
+        <tr>
+          <th>Товар</th>
+          <th>Описание</th>
+          <th>Количество</th>
+          <th>Стоимость</th>
+        </tr>
+        <tr *ngFor="let food of foods; let i = index">
+          <td>
+            <div class="table__food-info">
+              <img class="table__food-img" [src]="food.imageUrls[0]" />
+              <div class="table__food-name">{{ food.name }}</div>
+            </div>
+          </td>
+          <td>
+            <div class="table__food-desc">{{ food.description }}</div>
+          </td>
+          <td>
+            <div class="table__food-count">
+              <button (click)="decreaseCountFood(i)">-</button
+              ><input
+                type="text"
+                readonly
+                value="{{ items[i].amount }}"
+              /><button (click)="increaseCountFood(i)">+</button>
+            </div>
+          </td>
+          <td>
+            <div class="table__food-cost">
+              {{ food.price * items[i].amount }} руб.
+            </div>
+          </td>
+        </tr>
+      </table>
+      <button
+        class="btn-ckeck-order"
+        *ngIf="isShowBtnCheckOrder"
+        (click)="
+          isShowFormOrder = !isShowFormOrder;
+          isShowBtnCheckOrder = !isShowBtnCheckOrder
+        "
+      >
+        Оформить заказ
+      </button>
+    </div>
     <form
       class="order-form"
       [formGroup]="form"

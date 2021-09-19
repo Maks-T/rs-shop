@@ -1,0 +1,12 @@
+<div class="favorite-page">
+  <div class="favorite-page__wrapper" *ngIf="foods.length">
+    <div class="foods-wrapper">
+      <app-food-card
+        *ngFor="let food of foods"
+        [food]="food"
+        [categoryId]="food.category"
+        [subCategoryId]="food.subCategory"
+      ></app-food-card>
+    </div>
+  </div>
+</div>

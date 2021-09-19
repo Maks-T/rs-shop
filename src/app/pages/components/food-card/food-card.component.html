@@ -1,4 +1,4 @@
-<div class="card-food">
+<div class="card-food" *ngIf="isShow">
   <img class="card-food__img" [src]="food.imageUrls[0]" />
   <div class="card-food__name">
     <a
@@ -22,5 +22,16 @@
     ></div>
   </div>
   <button class="btn-inCart" (click)="addFoodToCart(food.id)">В корзину</button>
-  <a class="btn-inFavorite">Добавить в избранное</a>
+  <a
+    class="btn-inFavorite"
+    *ngIf="!food.isFavorite"
+    (click)="addFoodToFavorite(food.id)"
+    >Добавить в избранное</a
+  >
+  <a
+    class="btn-inFavorite"
+    *ngIf="food.isFavorite"
+    (click)="deleteFoodFromFavorite(food.id)"
+    >Удалить из избранного</a
+  >
 </div>

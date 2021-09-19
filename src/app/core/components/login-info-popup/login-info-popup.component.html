@@ -31,7 +31,11 @@
           {{ userInfo.cart.length }}
         </div>
       </a>
-      <a class="login-info__favorite-info" *ngIf="userInfo.favorites.length">
+      <a
+        class="login-info__favorite-info"
+        *ngIf="userInfo.favorites.length"
+        [routerLink]="['/favorite']"
+      >
         Избранное
         <div class="login-info__favorite-info-count">
           {{ userInfo.favorites.length }}

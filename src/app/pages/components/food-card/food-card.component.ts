@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IFood } from 'src/app/core/models/food';
 import { CartService } from 'src/app/core/services/cart.service';
+import { FavoriteService } from 'src/app/core/services/favorite.service';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -13,18 +14,33 @@ export class FoodCardComponent implements OnInit {
   @Input() categoryId!: string;
   @Input() subCategoryId!: string;
 
+  isShow: boolean = true;
+
   constructor(
     public cartService: CartService,
-    private userService: UserService
+
+    private favoriteService: FavoriteService
   ) {}
 
   ngOnInit(): void {}
 
   addFoodToCart(id: string) {
-    this.userService.getUserInfo().subscribe((res) => console.log(res));
-
     this.cartService.addFoodToCart(id).subscribe((mes) => {
       console.log('mes add to cart   :   ', mes);
+    });
+  }
+
+  addFoodToFavorite(id: string) {
+    this.favoriteService.addFoodToFavorite(id).subscribe((mes) => {
+      this.food.isFavorite = true;
+      console.log('mes add to favorite   :   ', mes);
+    });
+  }
+
+  deleteFoodFromFavorite(id: string) {
+    this.food.isFavorite = false;
+    this.favoriteService.deleteFoodFromFavorite(id).subscribe((mes) => {
+      console.log('mes add to favorite   :   ', mes);
     });
   }
 }

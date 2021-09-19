@@ -1,24 +1,28 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ICategory } from 'src/app/core/models/categories';
 import { IFood } from 'src/app/core/models/food';
+import { IUserInfo } from 'src/app/core/models/user-info';
 import { CatalogService } from 'src/app/core/services/catalog.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-subcategory-page',
   templateUrl: './subcategory-page.component.html',
   styleUrls: ['./subcategory-page.component.scss'],
 })
-export class SubcategoryPageComponent implements OnInit {
+export class SubcategoryPageComponent implements OnInit, OnChanges {
   category?: ICategory;
   categoryName: string = '';
   subCategoryName: string = '';
   categoryId: string = '';
   subCategoryId: string = '';
   foods: IFood[] = [];
+  userInfo!: IUserInfo;
 
   constructor(
     private catalogService: CatalogService,
+    private userService: UserService,
     private route: ActivatedRoute
   ) {}
 
@@ -41,11 +45,30 @@ export class SubcategoryPageComponent implements OnInit {
         }
       });
 
-      this.catalogService
-        .fetchFoodsBySubCategory(this.categoryId, this.subCategoryId)
-        .subscribe((foods) => {
-          this.foods = foods;
-        });
+      this.loadFoods();
     });
+  }
+  ngOnChanges(): void {
+    // this.loadFoods();
+  }
+
+  loadFoods() {
+    this.catalogService
+      .fetchFoodsBySubCategory(this.categoryId, this.subCategoryId)
+      .subscribe((foods) => {
+        this.userService.getUserInfo().subscribe((userInfo) => {
+          this.userInfo = userInfo;
+          this.foods = foods.map((food) => {
+            const findIdFavorite = this.userInfo.favorites.find(
+              (favorite) => favorite === food.id
+            );
+            if (food.id === findIdFavorite) {
+              food.isFavorite = true;
+            }
+
+            return food;
+          });
+        });
+      });
   }
 }
