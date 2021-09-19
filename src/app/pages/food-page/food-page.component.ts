@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ICategory } from 'src/app/core/models/categories';
 import { IFood } from 'src/app/core/models/food';
+import { IUserInfo } from 'src/app/core/models/user-info';
+import { CartService } from 'src/app/core/services/cart.service';
 import { CatalogService } from 'src/app/core/services/catalog.service';
+import { FavoriteService } from 'src/app/core/services/favorite.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-food-page',
@@ -17,9 +21,13 @@ export class FoodPageComponent implements OnInit {
   subCategoryId: string = '';
   foodId: string = '';
   food!: IFood;
+  userInfo!: IUserInfo;
 
   constructor(
     private catalogService: CatalogService,
+    private favoriteService: FavoriteService,
+    private cartService: CartService,
+    private userService: UserService,
     private route: ActivatedRoute
   ) {}
 
@@ -45,7 +53,57 @@ export class FoodPageComponent implements OnInit {
 
       this.catalogService.fetchFoodById(this.foodId).subscribe((food) => {
         this.food = food;
+        this.loadFood();
       });
+    });
+  }
+  addFoodToCart(id: string) {
+    this.cartService.addFoodToCart(id).subscribe((mes) => {
+      this.food.isInCart = true;
+      console.log('mes add to cart   :   ', mes);
+    });
+  }
+
+  deleteFoodFromCart(id: string) {
+    this.cartService.deleteFoodFromCart(id).subscribe((mes) => {
+      this.food.isInCart = false;
+      console.log('mes add to cart   :   ', mes);
+    });
+  }
+
+  addFoodToFavorite(id: string) {
+    this.favoriteService.addFoodToFavorite(id).subscribe((mes) => {
+      this.food.isFavorite = true;
+      console.log('mes add to favorite   :   ', mes);
+    });
+  }
+
+  deleteFoodFromFavorite(id: string) {
+    this.food.isFavorite = false;
+    this.favoriteService.deleteFoodFromFavorite(id).subscribe((mes) => {
+      console.log('mes add to favorite   :   ', mes);
+    });
+  }
+
+  loadFood() {
+    this.userService.getUserInfo().subscribe((userInfo) => {
+      this.userInfo = userInfo;
+
+      const findIdFavorite = this.userInfo.favorites.find(
+        (favorite) => favorite === this.food.id
+      );
+
+      const findIdCart = this.userInfo.cart.find(
+        (cart) => cart === this.food.id
+      );
+
+      if (this.food.id === findIdFavorite) {
+        this.food.isFavorite = true;
+      }
+
+      if (this.food.id === findIdCart) {
+        this.food.isInCart = true;
+      }
     });
   }
 }

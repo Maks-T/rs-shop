@@ -26,6 +26,14 @@ export class FoodCardComponent implements OnInit {
 
   addFoodToCart(id: string) {
     this.cartService.addFoodToCart(id).subscribe((mes) => {
+      this.food.isInCart = true;
+      console.log('mes add to cart   :   ', mes);
+    });
+  }
+
+  deleteFoodFromCart(id: string) {
+    this.cartService.deleteFoodFromCart(id).subscribe((mes) => {
+      this.food.isInCart = false;
       console.log('mes add to cart   :   ', mes);
     });
   }

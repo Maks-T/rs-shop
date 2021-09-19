@@ -73,6 +73,12 @@
       background-color: #d80944;
     }
   }
+  .btn-inCart.active {
+    border: 3px solid #ea1653;
+    color: #ea1653;
+    background: #fff;
+    width: 160px;
+  }
 
   .btn-inFavorite {
     color: #0072bc;

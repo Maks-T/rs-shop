@@ -18,6 +18,9 @@ export class SubcategoryPageComponent implements OnInit, OnChanges {
   categoryId: string = '';
   subCategoryId: string = '';
   foods: IFood[] = [];
+  start = 0;
+  count = 10;
+  loadFoodsComlete = false;
   userInfo!: IUserInfo;
 
   constructor(
@@ -53,21 +56,42 @@ export class SubcategoryPageComponent implements OnInit, OnChanges {
   }
 
   loadFoods() {
+    this.start = this.foods.length;
+
     this.catalogService
-      .fetchFoodsBySubCategory(this.categoryId, this.subCategoryId)
+      .fetchFoodsBySubCategory(
+        this.categoryId,
+        this.subCategoryId,
+        this.start,
+        this.count
+      )
       .subscribe((foods) => {
         this.userService.getUserInfo().subscribe((userInfo) => {
           this.userInfo = userInfo;
-          this.foods = foods.map((food) => {
+          const newFoods = foods.map((food) => {
             const findIdFavorite = this.userInfo.favorites.find(
               (favorite) => favorite === food.id
             );
+
+            const findIdCart = this.userInfo.cart.find(
+              (cart) => cart === food.id
+            );
+
             if (food.id === findIdFavorite) {
               food.isFavorite = true;
             }
 
+            if (food.id === findIdCart) {
+              food.isInCart = true;
+            }
+
             return food;
           });
+
+          this.foods = this.foods.concat(newFoods);
+          if (this.foods.length - this.start < this.count) {
+            this.loadFoodsComlete = true;
+          }
         });
       });
   }

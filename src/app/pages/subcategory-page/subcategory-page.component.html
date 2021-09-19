@@ -26,5 +26,12 @@
         [subCategoryId]="subCategoryId"
       ></app-food-card>
     </div>
+    <button
+      class="btn-load-foods"
+      (click)="loadFoods()"
+      *ngIf="!loadFoodsComlete"
+    >
+      Загрузить еще
+    </button>
   </div>
 </div>

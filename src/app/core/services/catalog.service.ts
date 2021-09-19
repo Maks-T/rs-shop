@@ -33,9 +33,11 @@ export class CatalogService {
 
   public fetchFoodsBySubCategory(
     categoryId: string,
-    subCategoryId: string
+    subCategoryId: string,
+    start?: number,
+    count?: number
   ): Observable<IFood[]> {
-    const url = `http://localhost:3004/goods/category/${categoryId}/${subCategoryId}`;
+    const url = `http://localhost:3004/goods/category/${categoryId}/${subCategoryId}?start=${start}&count=${count}`;
 
     return this.http.get<IFood[]>(url).pipe(take(1));
   }
