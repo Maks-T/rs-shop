@@ -1,7 +1,7 @@
 <div class="cart-page">
   <div class="cart-page__wrapper">
     <div class="cart-page__title">Оформление заказа</div>
-    <div class="cart-page__title-list">Список товаров</div>
+    <div class="cart-page__title-list" *ngIf="foods.length">Список товаров</div>
     <hr />
     <table *ngIf="foods.length">
       <tr>
@@ -23,7 +23,7 @@
         <td>
           <div class="table__food-count">
             <button (click)="decreaseCountFood(i)">-</button
-            ><input type="text" readonly value="{{ countFoods[i] }}" /><button
+            ><input type="text" readonly value="{{ items[i].amount }}" /><button
               (click)="increaseCountFood(i)"
             >
               +
@@ -32,15 +32,18 @@
         </td>
         <td>
           <div class="table__food-cost">
-            {{ food.price * countFoods[i] }} руб.
+            {{ food.price * items[i].amount }} руб.
           </div>
         </td>
       </tr>
     </table>
     <button
       class="btn-ckeck-order"
-      *ngIf="!isShowFormOrder"
-      (click)="isShowFormOrder = !isShowFormOrder"
+      *ngIf="isShowBtnCheckOrder"
+      (click)="
+        isShowFormOrder = !isShowFormOrder;
+        isShowBtnCheckOrder = !isShowBtnCheckOrder
+      "
     >
       Оформить заказ
     </button>
@@ -125,5 +128,15 @@
         </button>
       </div>
     </form>
+
+    <div class="cart-page__order-message" *ngIf="isShowMessageOrder">
+      <h3>Ваш заказ создан успешно, ожидайте доставку в указанное время</h3>
+
+      <div>ФИО : {{ detailsOrder.name }}</div>
+      <div>Адрес доставки : {{ detailsOrder.address }}</div>
+      <div>Номер телефона : {{ detailsOrder.phone }}</div>
+      <div>Желаемое время доставки : {{ detailsOrder.timeToDeliver }}</div>
+      <div>Комментарий к заказу : {{ detailsOrder.comment }}</div>
+    </div>
   </div>
 </div>

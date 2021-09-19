@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IFood } from 'src/app/core/models/food';
 import { IOrder } from 'src/app/core/models/order';
-import { Details, IUserInfo } from 'src/app/core/models/user-info';
+import { Details, Item, IUserInfo } from 'src/app/core/models/user-info';
+import { CartService } from 'src/app/core/services/cart.service';
 import { CatalogService } from 'src/app/core/services/catalog.service';
 import { UserService } from 'src/app/core/services/user.service';
+
+const phoneRexExp = '^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$';
 
 @Component({
   selector: 'app-cart-page',
@@ -13,16 +16,14 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class CartPageComponent implements OnInit {
   foods: IFood[] = [];
-  countFoods: number[] = [];
+
   userInfo!: IUserInfo; //??????????
+  detailsOrder!: Details;
+  items: Item[] = [];
 
+  isShowBtnCheckOrder: boolean = true;
   isShowFormOrder: boolean = false;
-
-  /*"name": "string",
-    "address": "string",
-    "phone": "string",
-    "timeToDeliver": "string",
-    "comment": "string" */
+  isShowMessageOrder: boolean = false;
 
   public name = new FormControl('', [
     Validators.required,
@@ -36,7 +37,10 @@ export class CartPageComponent implements OnInit {
     Validators.maxLength(250),
   ]);
 
-  public phone = new FormControl('', [Validators.required]);
+  public phone = new FormControl('', [
+    Validators.required,
+    Validators.pattern(phoneRexExp),
+  ]);
 
   public timeToDeliver = new FormControl('', [Validators.required]);
 
@@ -46,16 +50,18 @@ export class CartPageComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private catalogService: CatalogService
+    private catalogService: CatalogService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
     this.userService.getUserInfo().subscribe((userInfo) => {
       this.userInfo = userInfo;
+      console.log(' this.userInfo  ', this.userInfo);
       userInfo.cart.forEach((cart) => {
         this.catalogService.fetchFoodById(cart).subscribe((food) => {
+          this.items.push({ id: cart, amount: 1 });
           this.foods.push(food);
-          this.countFoods.push(1);
         });
       });
     });
@@ -70,22 +76,22 @@ export class CartPageComponent implements OnInit {
   }
 
   decreaseCountFood(index: number) {
-    if (this.countFoods[index] > 0) {
-      this.countFoods[index] -= 1;
+    if (this.items[index].amount > 0) {
+      this.items[index].amount -= 1;
     }
   }
 
   increaseCountFood(index: number) {
     console.log('товаров на складе - ', this.foods[index].availableAmount);
-    if (this.countFoods[index] < Number(this.foods[index].availableAmount)) {
-      this.countFoods[index] += 1;
+    if (this.items[index].amount < Number(this.foods[index].availableAmount)) {
+      this.items[index].amount += 1;
     } else {
       alert('товаров больше нет на складе');
     }
   }
 
   public getErrorMessage(): string {
-    return 'error';
+    return 'введите корректные данные';
     /*
     if (this.login.hasError('required')) {
       return 'You must enter a value';
@@ -96,8 +102,24 @@ export class CartPageComponent implements OnInit {
   public onSubmit(): void {
     if (this.form.valid) {
       const formData: Details = this.form.value;
-
+      this.detailsOrder = formData;
       console.log('formData', formData);
+
+      const orderData: IOrder = {
+        items: this.items,
+        details: this.detailsOrder,
+      };
+
+      console.log('orderData ', orderData);
+      this.cartService
+        .createOrder(orderData)
+        .subscribe((mes) => console.log(mes));
+
+      this.isShowFormOrder = false;
+      this.isShowMessageOrder = true;
+
+      this.foods = [];
+      this.items = [];
     }
   }
 }

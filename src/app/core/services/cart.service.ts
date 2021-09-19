@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IOrder } from '../models/order';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -19,5 +20,16 @@ export class CartService {
     console.log('add cart ID=', id);
 
     return this.http.post<string>(url, { id }, { headers });
+  }
+
+  public createOrder(orderData: IOrder): Observable<string> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.userService.getToken}`,
+    });
+
+    const url = `http://localhost:3004/users/order`;
+
+    return this.http.post<string>(url, orderData, { headers });
   }
 }
