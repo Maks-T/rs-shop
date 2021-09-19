@@ -5,6 +5,7 @@ import { IOrder } from 'src/app/core/models/order';
 import { Details, Item, IUserInfo } from 'src/app/core/models/user-info';
 import { CartService } from 'src/app/core/services/cart.service';
 import { CatalogService } from 'src/app/core/services/catalog.service';
+import { OrderService } from 'src/app/core/services/order.service';
 import { UserService } from 'src/app/core/services/user.service';
 
 const phoneRexExp = '^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$';
@@ -51,7 +52,8 @@ export class CartPageComponent implements OnInit {
   constructor(
     private userService: UserService,
     private catalogService: CatalogService,
-    private cartService: CartService
+    private cartService: CartService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
@@ -76,7 +78,7 @@ export class CartPageComponent implements OnInit {
   }
 
   decreaseCountFood(index: number) {
-    if (this.items[index].amount > 0) {
+    if (this.items[index].amount > 1) {
       this.items[index].amount -= 1;
     }
   }
@@ -111,8 +113,8 @@ export class CartPageComponent implements OnInit {
       };
 
       console.log('orderData ', orderData);
-      this.cartService
-        .createOrder(orderData)
+      this.orderService
+        .addOrder(orderData)
         .subscribe((mes) => console.log(mes));
 
       this.isShowFormOrder = false;
@@ -121,5 +123,12 @@ export class CartPageComponent implements OnInit {
       this.foods = [];
       this.items = [];
     }
+  }
+
+  deleteFoodFromCart(id: string) {
+    this.cartService.deleteFoodFromCart(id).subscribe(() => {
+      const findIndex = this.foods.findIndex((food) => food.id === id);
+      this.foods.splice(findIndex, 1);
+    });
   }
 }

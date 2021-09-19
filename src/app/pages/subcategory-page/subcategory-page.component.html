@@ -24,7 +24,10 @@
         class="subcategory__filter-panel-rating"
         (click)="changeTypeSort(TypeSort.rating)"
         [ngStyle]="{
-          textDecoration: typeSort === TypeSort.rating ? 'none' : 'underline'
+          textDecoration:
+            typeSort === TypeSort.ratingUp || typeSort === TypeSort.ratingDown
+              ? 'none'
+              : 'underline'
         }"
       >
         популярности</a
@@ -33,7 +36,10 @@
         class="subcategory__filter-panel-price"
         (click)="changeTypeSort(TypeSort.price)"
         [ngStyle]="{
-          textDecoration: typeSort === TypeSort.price ? 'none' : 'underline'
+          textDecoration:
+            typeSort === TypeSort.priceUp || typeSort === TypeSort.priceDown
+              ? 'none'
+              : 'underline'
         }"
       >
         цене</a

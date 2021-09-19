@@ -72,7 +72,11 @@
     td input {
       width: 40px;
     }
-
+    .btn-delete-in-cart {
+      color: #dc3545;
+      text-decoration: underline;
+      cursor: pointer;
+    }
     .btn-ckeck-order,
     .btn-confirm-order {
       display: inline-block;

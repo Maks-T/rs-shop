@@ -34,15 +34,4 @@ export class CartService {
 
     return this.http.delete<string>(url, { headers });
   }
-
-  public createOrder(orderData: IOrder): Observable<string> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.userService.getToken}`,
-    });
-
-    const url = `http://localhost:3004/users/order`;
-
-    return this.http.post<string>(url, orderData, { headers });
-  }
 }

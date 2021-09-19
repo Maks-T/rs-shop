@@ -13,6 +13,7 @@ import { FoodPageComponent } from './food-page/food-page.component';
 import { FoodSliderComponent } from './components/food-slider/food-slider.component';
 import { FavoritePageComponent } from './favorite-page/favorite-page.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { OrderPageComponent } from './order-page/order-page.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     FoodSliderComponent,
     FavoritePageComponent,
     FilterPipe,
+    OrderPageComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +39,7 @@ import { FilterPipe } from './pipes/filter.pipe';
       { path: 'subcategory', component: SubcategoryPageComponent },
       { path: 'food', component: FoodPageComponent },
       { path: 'favorite', component: FavoritePageComponent },
+      { path: 'order', component: OrderPageComponent },
     ]),
   ],
   exports: [RouterModule, AmountPipe],

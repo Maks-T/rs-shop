@@ -2,7 +2,17 @@
   <ng-template ngbSlide *ngFor="let food of foods">
     <a class="slide" href="#">
       <div class="left-side">
-        <h2>{{ food.name }}</h2>
+        <h2>
+          <a
+            [routerLink]="['/food']"
+            [queryParams]="{
+              foodId: food.id,
+              categoryId: food.category,
+              subCategoryId: food.subCategory
+            }"
+            >{{ food.name }}</a
+          >
+        </h2>
         <div class="price">цена: {{ food.price }}</div>
       </div>
       <div class="right-side"><img [src]="food.imageUrls[0]" /></div>
