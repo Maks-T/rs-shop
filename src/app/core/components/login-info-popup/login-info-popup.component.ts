@@ -31,6 +31,10 @@ export class LoginInfoPopupComponent implements OnInit {
     this.showLoginInfoFalse.emit();
   }
 
+  closePopup() {
+    this.showLoginInfoFalse.emit();
+  }
+
   clickBtnLoginOut() {
     this.userService.logOut();
     this.showLoginInfoFalse.emit();

@@ -21,7 +21,11 @@
     </button>
 
     <div class="login-info__info" *ngIf="userInfo">
-      <a class="login-info__cart-info" *ngIf="userInfo.cart.length">
+      <a
+        class="login-info__cart-info"
+        *ngIf="userInfo.cart.length"
+        [routerLink]="['/cart']"
+      >
         Корзина
         <div class="login-info__cart-info-count">
           {{ userInfo.cart.length }}

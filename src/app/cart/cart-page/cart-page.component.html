@@ -1,1 +1,129 @@
-<p>cart-page works!</p>
+<div class="cart-page">
+  <div class="cart-page__wrapper">
+    <div class="cart-page__title">Оформление заказа</div>
+    <div class="cart-page__title-list">Список товаров</div>
+    <hr />
+    <table *ngIf="foods.length">
+      <tr>
+        <th>Товар</th>
+        <th>Описание</th>
+        <th>Количество</th>
+        <th>Стоимость</th>
+      </tr>
+      <tr *ngFor="let food of foods; let i = index">
+        <td>
+          <div class="table__food-info">
+            <img class="table__food-img" [src]="food.imageUrls[0]" />
+            <div class="table__food-name">{{ food.name }}</div>
+          </div>
+        </td>
+        <td>
+          <div class="table__food-desc">{{ food.description }}</div>
+        </td>
+        <td>
+          <div class="table__food-count">
+            <button (click)="decreaseCountFood(i)">-</button
+            ><input type="text" readonly value="{{ countFoods[i] }}" /><button
+              (click)="increaseCountFood(i)"
+            >
+              +
+            </button>
+          </div>
+        </td>
+        <td>
+          <div class="table__food-cost">
+            {{ food.price * countFoods[i] }} руб.
+          </div>
+        </td>
+      </tr>
+    </table>
+    <button
+      class="btn-ckeck-order"
+      *ngIf="!isShowFormOrder"
+      (click)="isShowFormOrder = !isShowFormOrder"
+    >
+      Оформить заказ
+    </button>
+
+    <form
+      class="order-form"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      *ngIf="isShowFormOrder"
+    >
+      <h2>Форма заказа</h2>
+      <hr />
+      <mat-form-field appearance="fill">
+        <mat-label>ФИО</mat-label>
+        <input
+          name="name"
+          matInput
+          type="text"
+          required
+          autofocus
+          formControlName="name"
+        />
+        <mat-error *ngIf="name.invalid">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill">
+        <mat-label>Адрес доставки</mat-label>
+        <input
+          name="address"
+          matInput
+          type="text"
+          required
+          formControlName="address"
+        />
+        <mat-error *ngIf="address.invalid">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill">
+        <mat-label>Номер телефона</mat-label>
+        <input
+          name="phone"
+          matInput
+          type="text"
+          required
+          formControlName="phone"
+        />
+        <mat-error *ngIf="phone.invalid">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill">
+        <mat-label>Желаемое время доставки</mat-label>
+        <input
+          name="timeToDeliver"
+          matInput
+          type="datetime-local"
+          required
+          formControlName="timeToDeliver"
+        />
+        <mat-error *ngIf="timeToDeliver.invalid">{{
+          getErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill">
+        <mat-label>Комментарий к заказу</mat-label>
+        <input name="comment" matInput type="text" formControlName="comment" />
+        <mat-error *ngIf="comment.invalid">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field>
+      <br />
+
+      <div>
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+          class="btn-confirm-order"
+        >
+          Подвердить заказ
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
