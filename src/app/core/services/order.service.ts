@@ -20,4 +20,15 @@ export class OrderService {
 
     return this.http.post<string>(url, orderData, { headers });
   }
+
+  public deleteOrder(id: number): Observable<string> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.userService.getToken}`,
+    });
+
+    const url = `http://localhost:3004/users/order?id=${id}`;
+
+    return this.http.delete<string>(url, { headers });
+  }
 }

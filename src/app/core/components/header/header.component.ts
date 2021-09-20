@@ -15,7 +15,7 @@ import { LocationService } from '../../services/location.service';
 })
 export class HeaderComponent implements OnInit {
   categories: ICategory[] = [];
-  currentLocation: string = 'Минск';
+
   showCatalog: boolean = false;
   showLoginInfo: boolean = false;
   showLoginForm: boolean = false;
@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.currentLocation = this.getLocationCity();
+    this.getLocationCity();
     this.catalogService.fetchCategories().subscribe((categories) => {
       this.categories = categories;
     });
@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
     if (this.locationService.autoLocation) {
       this.locationService
         .getLocation()
-        .pipe(take(1), takeUntil(this.destroyed$))
+        .pipe(takeUntil(this.destroyed$))
         .subscribe((location) => {
           this.city = location.city;
         });

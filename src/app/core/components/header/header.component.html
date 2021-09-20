@@ -5,12 +5,13 @@
         class="btn-location"
         (click)="showLocationPopup = !showLocationPopup"
       >
-        {{ getLocationCity() }}
+        {{ city }}
       </button>
       <app-location-popup
         *ngIf="showLocationPopup"
         (showLocationPopupFalse)="getShowLocationPopupFalse()"
         (locationSendStr)="setLocation($event)"
+        [location]="city"
       ></app-location-popup>
     </div>
     <div class="header__fist-line-right">

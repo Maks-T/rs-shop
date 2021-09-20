@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LocationService } from '../services/location.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { LocationService } from '../services/location.service';
   styleUrls: ['./location-popup.component.scss'],
 })
 export class LocationPopupComponent implements OnInit {
-  location = 'Минск';
+  @Input() location = 'Минск';
   @Output() showLocationPopupFalse: EventEmitter<void> =
     new EventEmitter<void>();
   @Output() locationSendStr: EventEmitter<string> = new EventEmitter<string>();
@@ -15,7 +15,7 @@ export class LocationPopupComponent implements OnInit {
   constructor(public locationService: LocationService) {}
 
   ngOnInit(): void {
-    this.location = this.locationService.getStaticLocation();
+    //  this.location = this.locationService.getStaticLocation();
   }
 
   clickBtnClose() {

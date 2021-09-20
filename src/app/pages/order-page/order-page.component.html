@@ -15,6 +15,7 @@
               Желаемое время доставки : {{ order.details.timeToDeliver }}
             </div>
             <div>Комментарий к заказу : {{ order.details.comment }}</div>
+            <a class="btn-delete-order" (click)="deleteOrder(i)">удалить</a>
           </li>
         </ul>
       </div>
