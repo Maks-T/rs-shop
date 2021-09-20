@@ -1,7 +1,17 @@
 <div class="header__fist-line">
   <div class="header__fist-line-wrapper">
     <div class="header__fist-line-left">
-      <button class="btn-location">{{ currentLocation }}</button>
+      <button
+        class="btn-location"
+        (click)="showLocationPopup = !showLocationPopup"
+      >
+        {{ getLocationCity() }}
+      </button>
+      <app-location-popup
+        *ngIf="showLocationPopup"
+        (showLocationPopupFalse)="getShowLocationPopupFalse()"
+        (locationSendStr)="setLocation($event)"
+      ></app-location-popup>
     </div>
     <div class="header__fist-line-right">
       <nav class="nav-communcation">

@@ -22,6 +22,9 @@
     margin: 0 auto;
     padding: 0 2.2%;
 
+    .header__fist-line-left {
+      position: relative;
+    }
     .header__fist-line-right {
       display: flex;
       justify-content: space-between;

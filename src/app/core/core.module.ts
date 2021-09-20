@@ -7,9 +7,10 @@ import { CatalogPopupComponent } from './components/catalog-popup/catalog-popup.
 import { RouterModule } from '@angular/router';
 import { LoginPopupComponent } from './components/login-popup/login-popup.component';
 import { LoginInfoPopupComponent } from './components/login-info-popup/login-info-popup.component';
+import { LocationPopupComponent } from './location-popup/location-popup.component';
 
 @NgModule({
-  declarations: [HeaderComponent, SearchComponent, CatalogPopupComponent, LoginPopupComponent, LoginInfoPopupComponent],
+  declarations: [HeaderComponent, SearchComponent, CatalogPopupComponent, LoginPopupComponent, LoginInfoPopupComponent, LocationPopupComponent],
   imports: [CommonModule, SharedModule, RouterModule],
   exports: [HeaderComponent, SearchComponent],
 })
