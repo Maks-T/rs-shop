@@ -5,7 +5,7 @@
         <ul>
           <li
             *ngFor="let order of orders; let i = index"
-            (click)="orderSelect(order)"
+            (click)="orderSelect(order, i)"
           >
             <div class="order-title">Заказ № {{ i }}</div>
             <div>ФИО : {{ order.details.name }}</div>
@@ -19,6 +19,7 @@
         </ul>
       </div>
       <div class="order-page__sides-right" *ngIf="currentFoods.length">
+        <h2>Заказ № {{ currentIndex }}</h2>
         <table>
           <tr>
             <th>Товар</th>

@@ -6,6 +6,7 @@
   width: 100%;
   padding-top: 60px;
   border-bottom: 1px solid rgba(213, 215, 219, 0.4);
+  min-height: calc(100vh - 250px);
 
   .favorite-page__wrapper {
     display: flex;

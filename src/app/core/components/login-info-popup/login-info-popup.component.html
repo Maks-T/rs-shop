@@ -41,6 +41,16 @@
           {{ userInfo.favorites.length }}
         </div>
       </a>
+      <a
+        class="login-info__favorite-info"
+        *ngIf="userInfo"
+        [routerLink]="['/order']"
+      >
+        Список заказов
+        <div class="login-info__favorite-info-count">
+          {{ userInfo.orders.length }}
+        </div>
+      </a>
     </div>
   </div>
 </div>

@@ -12,7 +12,11 @@
     value="{{ location }}"
     #inputLocation
   />
-  <button class="btn-save" (click)="sendLocation(inputLocation.value)">
+  <button
+    class="btn-save"
+    (click)="sendLocation(inputLocation.value)"
+    [disabled]="!inputLocation.value"
+  >
     Сохранить
   </button>
 </div>

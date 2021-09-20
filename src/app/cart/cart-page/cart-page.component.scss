@@ -4,7 +4,7 @@
   justify-content: flex-start;
   flex-direction: row;
   width: 100%;
-
+  min-height: calc(100vh - 250px);
   padding-top: 60px;
   border-bottom: 1px solid rgba(213, 215, 219, 0.4);
   .cart-page__wrapper {

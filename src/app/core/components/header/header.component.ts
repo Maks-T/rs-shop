@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { catchError, take, takeUntil } from 'rxjs/operators';
 
 import { ICategory } from '../../models/categories';
 import { ILocation } from '../../models/location';
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
   showLoginForm: boolean = false;
   showLocationPopup: boolean = false;
   city = 'Минск';
-
+  destroyed$ = new Subject<boolean>();
   constructor(
     private catalogService: CatalogService,
     private locationService: LocationService
@@ -35,10 +36,15 @@ export class HeaderComponent implements OnInit {
 
   getLocationCity(): string {
     if (this.locationService.autoLocation) {
-      this.locationService.getLocation().subscribe((location) => {
-        this.city = location.city;
-      });
+      this.locationService
+        .getLocation()
+        .pipe(take(1), takeUntil(this.destroyed$))
+        .subscribe((location) => {
+          this.city = location.city;
+        });
     } else {
+      this.destroyed$.next();
+      this.destroyed$.complete();
       this.city = this.locationService.getStaticLocation();
     }
     return this.city;
