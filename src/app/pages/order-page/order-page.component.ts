@@ -46,4 +46,12 @@ export class OrderPageComponent implements OnInit {
       });
     });
   }
+
+  isActive(i: number) {
+    if (i === this.currentIndex) {
+      return true;
+    }
+
+    return false;
+  }
 }

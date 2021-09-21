@@ -65,11 +65,13 @@
       &:hover {
         box-shadow: 4px 4px 4px 0px rgba(50, 50, 50, 0.13);
       }
+    }
 
-      active {
-        background-color: rgba(255, 79, 161, 0.2);
-        box-shadow: 4px 4px 4px 0px rgba(50, 50, 50, 0.13);
-      }
+    .active {
+      color: #d62761;
+      background: rgba(229, 46, 107, 0.1);
+
+      box-shadow: 4px 4px 4px 0px rgba(50, 50, 50, 0.13);
     }
   }
 }

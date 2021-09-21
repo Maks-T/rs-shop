@@ -27,28 +27,23 @@ export class FoodCardComponent implements OnInit {
   addFoodToCart(id: string) {
     this.cartService.addFoodToCart(id).subscribe((mes) => {
       this.food.isInCart = true;
-      console.log('mes add to cart   :   ', mes);
     });
   }
 
   deleteFoodFromCart(id: string) {
     this.cartService.deleteFoodFromCart(id).subscribe((mes) => {
       this.food.isInCart = false;
-      console.log('mes add to cart   :   ', mes);
     });
   }
 
   addFoodToFavorite(id: string) {
     this.favoriteService.addFoodToFavorite(id).subscribe((mes) => {
       this.food.isFavorite = true;
-      console.log('mes add to favorite   :   ', mes);
     });
   }
 
   deleteFoodFromFavorite(id: string) {
     this.food.isFavorite = false;
-    this.favoriteService.deleteFoodFromFavorite(id).subscribe((mes) => {
-      console.log('mes add to favorite   :   ', mes);
-    });
+    this.favoriteService.deleteFoodFromFavorite(id).subscribe((mes) => {});
   }
 }

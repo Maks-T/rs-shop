@@ -16,7 +16,6 @@ export class FavoriteService {
     });
 
     const url = `http://localhost:3004/users/favorites`;
-    console.log('add vaforite ID=', id);
 
     return this.http.post<string>(url, { id }, { headers });
   }
@@ -27,7 +26,6 @@ export class FavoriteService {
     });
 
     const url = `http://localhost:3004/users/favorites?id=${id}`;
-    console.log('fovorite vaforite ID=', id);
 
     return this.http.delete<string>(url, { headers });
   }

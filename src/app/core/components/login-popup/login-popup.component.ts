@@ -67,7 +67,6 @@ export class LoginPopupComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroyed$))
       .subscribe((isLogin) => {
         if (isLogin) this.clickBtnClose();
-        console.log('subscribe isLogin in loginPopup', Math.random() * 10000);
       });
   }
 

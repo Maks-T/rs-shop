@@ -4,6 +4,8 @@
       <a
         class="catalog-popup__category-item"
         *ngFor="let item of categories"
+        appMenuIcon
+        [categoryName]="item.name"
         href="#"
         (mouseover)="itemFocused(item)"
         [routerLink]="['/category']"

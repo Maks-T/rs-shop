@@ -59,7 +59,7 @@ export class CartPageComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUserInfo().subscribe((userInfo) => {
       this.userInfo = userInfo;
-      console.log(' this.userInfo  ', this.userInfo);
+
       userInfo.cart.forEach((cart) => {
         this.catalogService.fetchFoodById(cart).subscribe((food) => {
           this.items.push({ id: cart, amount: 1 });
@@ -84,7 +84,6 @@ export class CartPageComponent implements OnInit {
   }
 
   increaseCountFood(index: number) {
-    console.log('товаров на складе - ', this.foods[index].availableAmount);
     if (this.items[index].amount < Number(this.foods[index].availableAmount)) {
       this.items[index].amount += 1;
     } else {
@@ -105,14 +104,12 @@ export class CartPageComponent implements OnInit {
     if (this.form.valid) {
       const formData: Details = this.form.value;
       this.detailsOrder = formData;
-      console.log('formData', formData);
 
       const orderData: IOrder = {
         items: this.items,
         details: this.detailsOrder,
       };
 
-      console.log('orderData ', orderData);
       this.orderService
         .addOrder(orderData)
         .subscribe((mes) => console.log(mes));

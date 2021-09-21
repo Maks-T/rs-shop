@@ -24,15 +24,59 @@
         height: 40px;
         padding-left: 25px;
         margin-left: 20px;
+        text-decoration: none;
+        cursor: pointer;
+        &:hover {
+          color: #d62761;
+          background: rgba(229, 46, 107, 0.2);
+        }
       }
 
       &__viber-contact {
         background: url("../../../../assets/icons/viber.svg") left center
           no-repeat;
+        &:hover {
+          background: url("../../../../assets/icons/viber_hover.svg") left
+            center no-repeat;
+        }
       }
 
       &__a1-contact {
         background: url("../../../../assets/icons/a1.svg") left center no-repeat;
+        &:hover {
+          background: url("../../../../assets/icons/a1.svg") left center
+            no-repeat;
+        }
+      }
+
+      &__smile-contact {
+        background: url("../../../../assets/icons/contact-smile.svg") left
+          center no-repeat;
+
+        &:hover {
+          background: url("../../../../assets/icons/contact-smile_hover.svg")
+            left center no-repeat;
+        }
+      }
+
+      &__phone-contact {
+        background: url("../../../../assets/icons/contact-phone.svg") left
+          center no-repeat;
+
+        &:hover {
+          background: url("../../../../assets/icons/contact-phone_hover.svg")
+            left center no-repeat;
+        }
+      }
+
+      &__telegram-contact {
+        background: url("../../../../assets/icons/contact-telegram.svg") left
+          center no-repeat;
+
+        &:hover {
+          background: url("../../../../assets/icons/contact-telegram_hover.svg")
+            left center no-repeat;
+        }
       }
     }
   }

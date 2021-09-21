@@ -11,7 +11,11 @@
       >{{ food.name }}</a
     >
   </div>
-  <div class="card-food__availableAmount">
+  <div
+    class="card-food__availableAmount"
+    appAmountColor
+    [availableAmount]="food.availableAmount"
+  >
     {{ food.availableAmount | amount }}
   </div>
   <div class="card-food__price">{{ food.price }}</div>

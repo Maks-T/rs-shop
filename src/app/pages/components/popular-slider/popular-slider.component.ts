@@ -21,6 +21,5 @@ export class PopularSliderComponent implements OnInit {
         this.foods[index].length = 6;
       });
     });
-    console.log(this.foods);
   }
 }

@@ -14,6 +14,8 @@ import { FoodSliderComponent } from './components/food-slider/food-slider.compon
 import { FavoritePageComponent } from './favorite-page/favorite-page.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { OrderPageComponent } from './order-page/order-page.component';
+import { AmountColorDirective } from './directives/amount-color.directive';
+import { MenuIcorDirective } from './directives/menu-icor.directive';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { OrderPageComponent } from './order-page/order-page.component';
     FavoritePageComponent,
     FilterPipe,
     OrderPageComponent,
+    AmountColorDirective,
+    MenuIcorDirective,
   ],
   imports: [
     CommonModule,

@@ -17,7 +17,6 @@ export class CartService {
     });
 
     const url = `http://localhost:3004/users/cart`;
-    console.log('add cart ID=', id);
 
     return this.http.post<string>(url, { id }, { headers });
   }
@@ -29,8 +28,6 @@ export class CartService {
     });
 
     const url = `http://localhost:3004/users/cart?id=${id}`;
-
-    console.log('delete in cart ID=', id);
 
     return this.http.delete<string>(url, { headers });
   }
