@@ -24,7 +24,18 @@
         <a class="nav-communcation__a1-contact nav-communcation__contact"
           >+375 29 302 10 21</a
         >
-        <a class="nav-communcation__contact">Еще</a>
+        <div class="contact-other">
+          <a
+            class="nav-communcation__contact"
+            (click)="showContactPopup = !showContactPopup"
+            [ngClass]="{ active: showContactPopup }"
+            >Еще</a
+          >
+          <app-contact-popup
+            (showContactPopupFalse)="getShowContactPopupFalse()"
+            *ngIf="showContactPopup"
+          ></app-contact-popup>
+        </div>
       </nav>
       <div class="time-working">контакт-центр с 8:00 до 22:00</div>
     </div>

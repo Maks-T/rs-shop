@@ -9,6 +9,7 @@ import { LoginPopupComponent } from './components/login-popup/login-popup.compon
 import { LoginInfoPopupComponent } from './components/login-info-popup/login-info-popup.component';
 import { LocationPopupComponent } from './location-popup/location-popup.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ContactPopupComponent } from './components/contact-popup/contact-popup.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FooterComponent } from './components/footer/footer.component';
     LoginInfoPopupComponent,
     LocationPopupComponent,
     FooterComponent,
+    ContactPopupComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule],
   exports: [HeaderComponent, SearchComponent, FooterComponent],

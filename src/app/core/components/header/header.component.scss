@@ -128,12 +128,26 @@
 .nav-communcation {
   display: flex;
 
+  .contact-other {
+    position: relative;
+  }
+
   &__contact {
     display: flex;
     align-items: center;
     height: 40px;
     padding-left: 25px;
     margin-left: 20px;
+    padding-right: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    background: url("../../../../assets/icons/triangle.png") right center
+      no-repeat;
+  }
+
+  &__contact.active {
+    background: url("../../../../assets/icons/triangle_active.png") right center
+      no-repeat;
   }
 
   &__viber-contact {

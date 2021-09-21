@@ -20,6 +20,8 @@ export class HeaderComponent implements OnInit {
   showLoginInfo: boolean = false;
   showLoginForm: boolean = false;
   showLocationPopup: boolean = false;
+  showContactPopup: boolean = false;
+
   city = 'Минск';
   destroyed$ = new Subject<boolean>();
   constructor(
@@ -66,6 +68,11 @@ export class HeaderComponent implements OnInit {
   getShowLocationPopupFalse() {
     this.showLocationPopup = false;
   }
+
+  getShowContactPopupFalse() {
+    this.showContactPopup = false;
+  }
+
   setLocation(location: string) {
     this.locationService.saveLocation(location);
     this.city = location;
