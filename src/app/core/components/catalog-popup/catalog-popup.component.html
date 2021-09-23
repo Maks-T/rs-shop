@@ -1,0 +1,34 @@
+<div class="catalog-popup-wrap" (click)="clickPopup()">
+  <div class="catalog-popup">
+    <div class="catalog-popup__category-list">
+      <a
+        class="catalog-popup__category-item"
+        *ngFor="let item of categories"
+        appMenuIcon
+        [categoryName]="item.name"
+        href="#"
+        (mouseover)="itemFocused(item)"
+        [routerLink]="['/category']"
+        [queryParams]="{ categoryId: item.id }"
+      >
+        {{ item.name }}
+      </a>
+    </div>
+    <div class="catalog-popup__subcategory-list">
+      <div class="catalog-popup__subcategory-item-name">
+        {{ currentCategoryItemName }}
+      </div>
+      <a
+        class="catalog-popup__subcategory-item"
+        *ngFor="let subitem of currentCategoryItem"
+        [routerLink]="['/subcategory']"
+        [queryParams]="{
+          categoryId: currentCategoryItemId,
+          subCategoryId: subitem.id
+        }"
+      >
+        {{ subitem.name }}</a
+      >
+    </div>
+  </div>
+</div>

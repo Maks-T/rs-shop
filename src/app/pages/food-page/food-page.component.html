@@ -1,0 +1,61 @@
+<div class="food" *ngIf="food">
+  <div class="food__wrapper" *ngIf="category">
+    <div class="food__menu">
+      <a
+        class="category-name"
+        [routerLink]="['/category']"
+        [queryParams]="{ categoryId: categoryId }"
+      >
+        {{ categoryName }}
+      </a>
+      <span> >> </span>
+      <a
+        class="subcategory-name"
+        [routerLink]="['/subcategory']"
+        [queryParams]="{ categoryId: categoryId, subCategoryId: subCategoryId }"
+      >
+        {{ subCategoryName }}
+      </a>
+    </div>
+    <h1 class="food__name">{{ food.name }}</h1>
+    <div class="food__content">
+      <div class="food__content-left-side">
+        <app-food-slider [imageUrls]="food.imageUrls"></app-food-slider>
+
+        <div class="food__description">
+          <div class="food__description-title">Описание товара:</div>
+          <div class="food__description-info">{{ food.description }}</div>
+        </div>
+      </div>
+      <div class="food__content-right-side">
+        <div class="price">{{ food.price }} бел.руб</div>
+        <a
+          class="btn-inFavorite"
+          *ngIf="!food.isFavorite"
+          (click)="addFoodToFavorite(food.id)"
+          >Добавить в избранное</a
+        >
+        <a
+          class="btn-inFavorite"
+          *ngIf="food.isFavorite"
+          (click)="deleteFoodFromFavorite(food.id)"
+          >Удалить из избранного</a
+        >
+        <button
+          class="btn-inCart"
+          (click)="addFoodToCart(food.id)"
+          *ngIf="!food.isInCart"
+        >
+          В корзину
+        </button>
+        <button
+          class="btn-inCart active"
+          (click)="deleteFoodFromCart(food.id)"
+          *ngIf="food.isInCart"
+        >
+          Удалить из корзины
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

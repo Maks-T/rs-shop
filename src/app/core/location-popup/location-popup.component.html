@@ -1,0 +1,18 @@
+<div class="location-popup">
+  <div class="btn-close" (click)="clickBtnClose()"></div>
+  <p class="location-popup__title">Населенный пункт</p>
+  <p class="location-popup__desc">
+    Вам будут показаны товары, а также условия доставки для выбранного
+    населенного пункта.
+  </p>
+  <label for="input-location">Населенный пункт</label>
+  <input
+    type="text"
+    name="input-location"
+    value="{{ location }}"
+    #inputLocation
+  />
+  <button class="btn-save" (click)="sendLocation(inputLocation.value)">
+    Сохранить
+  </button>
+</div>

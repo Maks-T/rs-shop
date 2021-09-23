@@ -1,0 +1,60 @@
+<div class="order-page">
+  <div class="order-page__wrapper">
+    <p class="order-page__message-no" *ngIf="!orders.length">
+      Нет текущих заказов
+    </p>
+    <div class="order-page__sides" *ngIf="orders.length">
+      <div class="order-page__sides-left">
+        <ul>
+          <li
+            *ngFor="let order of orders; let i = index"
+            (click)="orderSelect(order, i)"
+            [ngClass]="{ active: isActive(i) }"
+          >
+            <div class="order-title">Заказ № {{ i }}</div>
+            <div>ФИО : {{ order.details.name }}</div>
+            <div>Адрес доставки : {{ order.details.address }}</div>
+            <div>Номер телефона : {{ order.details.phone }}</div>
+            <div>
+              Желаемое время доставки : {{ order.details.timeToDeliver }}
+            </div>
+            <div>Комментарий к заказу : {{ order.details.comment }}</div>
+            <a class="btn-delete-order" (click)="deleteOrder(order.id)"
+              >удалить</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="order-page__sides-right" *ngIf="currentFoods.length">
+        <h2>Заказ № {{ currentIndex }}</h2>
+        <table>
+          <tr>
+            <th>Товар</th>
+            <th>Количество</th>
+            <th>Стоимость</th>
+          </tr>
+          <tr *ngFor="let food of currentFoods; let inx = index">
+            <td>
+              <a
+                [routerLink]="['/food']"
+                [queryParams]="{
+                  foodId: food.id,
+                  categoryId: food.category,
+                  subCategoryId: food.subCategory
+                }"
+                >{{ food.name }}</a
+              >
+            </td>
+
+            <td>{{ currentOrder.items[inx].amount }}</td>
+            <td>{{ food.price * currentOrder.items[inx].amount }}</td>
+          </tr>
+        </table>
+
+        <a class="btn-update" (click)="goToOrderEditPage(currentIndex)"
+          >Изменить</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="header__fist-line">
+  <div class="header__fist-line-wrapper">
+    <div class="header__fist-line-left">
+      <button
+        class="btn-location"
+        (click)="showLocationPopup = !showLocationPopup"
+      >
+        {{ city }}
+      </button>
+      <app-location-popup
+        *ngIf="showLocationPopup"
+        (showLocationPopupFalse)="getShowLocationPopupFalse()"
+        (locationSendStr)="setLocation($event)"
+        [location]="city"
+      ></app-location-popup>
+    </div>
+    <div class="header__fist-line-right">
+      <nav class="nav-communcation">
+        <a
+          class="nav-communcation__viber-contact nav-communcation__contact"
+          href="https://chats.viber.com/21vek.by"
+          >Viber</a
+        >
+        <a class="nav-communcation__a1-contact nav-communcation__contact"
+          >+375 29 302 10 21</a
+        >
+        <div class="contact-other">
+          <a
+            class="nav-communcation__contact"
+            (click)="showContactPopup = !showContactPopup"
+            [ngClass]="{ active: showContactPopup }"
+            >Еще</a
+          >
+          <app-contact-popup
+            (showContactPopupFalse)="getShowContactPopupFalse()"
+            *ngIf="showContactPopup"
+          ></app-contact-popup>
+        </div>
+      </nav>
+      <div class="time-working">контакт-центр с 8:00 до 22:00</div>
+    </div>
+  </div>
+</div>
+<div class="header__second-line">
+  <div class="header__second-line-wrapper">
+    <a class="logo" href="#"></a>
+    <button
+      class="btn-catalog"
+      (click)="showCatalog = !showCatalog"
+      [ngClass]="{ active: showCatalog }"
+    >
+      Каталог товаров
+    </button>
+    <app-search></app-search>
+    <div class="login-info-container">
+      <app-login-info-popup
+        *ngIf="showLoginInfo"
+        (showLoginInfoFalse)="getShowLoginInfoFalse()"
+      ></app-login-info-popup>
+      <app-login-popup
+        *ngIf="showLoginForm"
+        (showLoginFormFalse)="getShowLoginFormFalse()"
+      ></app-login-popup>
+    </div>
+    <button
+      class="btn-login"
+      (click)="showLoginInfo = !showLoginInfo"
+      [ngClass]="{ active: showLoginInfo }"
+    >
+      Аккаунт
+    </button>
+  </div>
+</div>
+<div class="header__third-line">
+  <div class="header__third-line-wrapper">
+    <ul class="category-menu">
+      <li class="category-item" *ngFor="let item of categories">
+        <a
+          class="category-link"
+          [routerLink]="['/category']"
+          [queryParams]="{ categoryId: item.id }"
+        >
+          {{ item.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="header__popup-wrapper">
+  <app-catalog-popup
+    *ngIf="showCatalog"
+    (showCatalogPopupFalse)="getCatalogPopupFalse()"
+  ></app-catalog-popup>
+</div>

@@ -1,0 +1,111 @@
+.order-page {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 100%;
+  min-height: calc(100vh - 250px);
+  padding-top: 60px;
+  border-bottom: 1px solid rgba(213, 215, 219, 0.4);
+  .order-page__wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    min-width: 941px;
+    max-width: 1090px;
+    margin: 0 auto;
+    padding: 0 2.2%;
+
+    .order-page__message-no {
+      font-size: 24px;
+    }
+    .order-title {
+      margin-bottom: 10px;
+      font-weight: bolder;
+    }
+
+    .order-page__sides {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      width: 100%;
+
+      &-left {
+        border-right: 1px solid rgba(39, 71, 248, 0.418);
+        padding-right: 20px;
+        width: 40%;
+
+        .btn-delete-order {
+          color: #dc3545;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+
+      &-right {
+        padding-left: 10px;
+        width: 60%;
+        th {
+          padding: 10px;
+          align-content: center;
+        }
+        td {
+          padding: 10px;
+          border-right: 1px solid rgba(128, 128, 128, 0.432);
+        }
+      }
+    }
+
+    li {
+      border-bottom: 1px solid rgb(255, 79, 161);
+      margin-bottom: 10px;
+      padding: 20px;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 4px 4px 4px 0px rgba(50, 50, 50, 0.13);
+      }
+    }
+
+    .active {
+      color: #d62761;
+      background: rgba(229, 46, 107, 0.1);
+
+      box-shadow: 4px 4px 4px 0px rgba(50, 50, 50, 0.13);
+    }
+
+    .btn-update {
+      display: inline-block;
+      align-self: flex-end;
+      width: 173px;
+      height: 40px;
+      margin-top: 30px;
+      margin-left: 30px;
+      line-height: 40px;
+      background: #0072bc;
+      font-weight: 500;
+      font-size: 16px;
+      border-radius: 4px;
+
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      outline: none;
+      border: 0;
+
+      transition: 0.2s ease;
+
+      &:hover {
+        background-color: #c90570;
+      }
+
+      &:active {
+        transform: translate(1px, 1px);
+      }
+    }
+  }
+}

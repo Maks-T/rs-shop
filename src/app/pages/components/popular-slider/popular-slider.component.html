@@ -1,0 +1,22 @@
+<ngb-carousel *ngIf="foods">
+  <ng-template ngbSlide *ngFor="let food of foods">
+    <div class="slide" href="#">
+      <div class="food-elem" *ngFor="let elem of food">
+        <div class="left-side"><img [src]="elem.imageUrls[0]" /></div>
+        <div class="right-side">
+          <a
+            [routerLink]="['/food']"
+            [queryParams]="{
+              foodId: elem.id,
+              categoryId: elem.category,
+              subCategoryId: elem.subCategory
+            }"
+            ><h4>{{ elem.name }}</h4></a
+          >
+
+          <div class="price">{{ elem.price }} руб.</div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ngb-carousel>

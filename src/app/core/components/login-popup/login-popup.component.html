@@ -1,0 +1,47 @@
+<div class="login-popup__wrapper">
+  <form class="login-popup" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2>Вход</h2>
+    <div class="btn-close" (click)="clickBtnClose()"></div>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your login</mat-label>
+      <input
+        name="login"
+        matInput
+        type="text"
+        placeholder="Warner"
+        required
+        autofocus
+        formControlName="login"
+        value="Warner"
+      />
+      <mat-error *ngIf="login.invalid">{{ getLoginErrorMessage() }}</mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input
+        name="password"
+        matInput
+        type="password"
+        placeholder="ea"
+        required
+        formControlName="password"
+        value="ea"
+      />
+
+      <mat-error *ngIf="password.invalid">{{
+        getPasswordErrorMessage()
+      }}</mat-error>
+    </mat-form-field>
+    <div>
+      <button
+        type="submit"
+        mat-raised-button
+        [disabled]="form.invalid"
+        class="login-submit"
+      >
+        Войти
+      </button>
+    </div>
+  </form>
+</div>

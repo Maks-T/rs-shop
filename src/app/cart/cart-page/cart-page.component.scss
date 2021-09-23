@@ -1,0 +1,125 @@
+.cart-page {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 100%;
+  min-height: calc(100vh - 250px);
+  padding-top: 60px;
+  border-bottom: 1px solid rgba(213, 215, 219, 0.4);
+  .cart-page__wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    min-width: 941px;
+    max-width: 1090px;
+    margin: 0 auto;
+    padding: 0 2.2%;
+    .cart-page__message-empty-cart {
+      font-size: 42px;
+    }
+    .cart-page__title {
+      font-size: 34px;
+    }
+
+    .cart-page__title-list {
+      font-size: 18px;
+    }
+    .table__food-info {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+    .table__food-img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
+    .table__food-name {
+      font-size: 14px;
+      padding: 10px;
+    }
+    .table__food-desc {
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    tr {
+      border-bottom: 1px dashed #dc354673;
+      padding: 10px 0;
+    }
+    .table__food-count {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      padding: 10px;
+    }
+
+    .table__food-cost {
+      font-size: 16px;
+      font-weight: bolder;
+      padding: 15px;
+    }
+
+    td button {
+      width: 30px;
+      height: 30px;
+    }
+
+    td input {
+      width: 40px;
+    }
+    .btn-delete-in-cart {
+      color: #dc3545;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .btn-ckeck-order,
+    .btn-confirm-order {
+      display: inline-block;
+      align-self: flex-end;
+      width: 173px;
+      height: 40px;
+      margin-top: 30px;
+      margin-left: 30px;
+      line-height: 40px;
+      background: #0072bc;
+      font-weight: 500;
+      font-size: 16px;
+      border-radius: 4px;
+
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      outline: none;
+      border: 0;
+
+      transition: 0.2s ease;
+
+      &:hover {
+        background-color: #c90570;
+      }
+
+      &:active {
+        transform: translate(1px, 1px);
+      }
+    }
+    .order-form {
+      width: 70%;
+      margin: 20px 0;
+
+      mat-error {
+        color: red;
+      }
+    }
+
+    .cart-page__order-message {
+      width: 70%;
+      margin: 20px 0;
+    }
+  }
+}

@@ -1,0 +1,110 @@
+:host {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.catalog-popup-wrap {
+  z-index: 1000;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  width: 100vw;
+  min-height: 60vh;
+}
+.catalog-popup {
+  display: flex;
+  flex-wrap: nowrap;
+
+  flex-direction: row;
+
+  min-width: 941px;
+  max-width: 1090px;
+
+  background: #fdf9ff;
+  box-shadow: 4px 4px 4px 0px rgba(50, 50, 50, 0.13);
+
+  &__category-list {
+    padding: 5px;
+    width: 24%;
+    border-right: 1px solid gray;
+  }
+
+  &__subcategory-list {
+    padding: 10px;
+    width: 74%;
+  }
+
+  &__category-item {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    padding-left: 30px;
+    height: 35px;
+
+    &:hover {
+      color: #d62761;
+      background: rgba(229, 46, 107, 0.1);
+    }
+  }
+
+  &__subcategory-item-name {
+    display: block;
+    font-size: 28px;
+    line-height: 50px;
+  }
+
+  &__subcategory-item {
+    display: block;
+    font-size: 14px;
+    line-height: 30px;
+
+    &:hover {
+      color: #d62761;
+    }
+  }
+  .icon-hobby {
+    background: url("../../../../assets/icons/menu-icons/hobby.svg") left center
+      no-repeat;
+
+    &:hover {
+      background: url("../../../../assets/icons/menu-icons/hobby_hover.svg")
+        left center no-repeat;
+    }
+  }
+  .icon-computers {
+    background: url("../../../../assets/icons/menu-icons/computers.svg") left
+      center no-repeat;
+
+    &:hover {
+      background: url("../../../../assets/icons/menu-icons/computers_hover.svg")
+        left center no-repeat;
+    }
+  }
+  .icon-furniture {
+    background: url("../../../../assets/icons/menu-icons/furniture.svg") left
+      center no-repeat;
+
+    &:hover {
+      background: url("../../../../assets/icons/menu-icons/furniture_hover.svg")
+        left center no-repeat;
+    }
+  }
+  .icon-electonics {
+    background: url("../../../../assets/icons/menu-icons/electonics.svg") left
+      center no-repeat;
+
+    &:hover {
+      background: url("../../../../assets/icons/menu-icons/electonics_hover.svg")
+        left center no-repeat;
+    }
+  }
+  .icon-appliances {
+    background: url("../../../../assets/icons/menu-icons/appliances.svg") left
+      center no-repeat;
+
+    &:hover {
+      background: url("../../../../assets/icons/menu-icons/appliances_hover.svg")
+        left center no-repeat;
+    }
+  }
+}

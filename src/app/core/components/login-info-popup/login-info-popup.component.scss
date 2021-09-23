@@ -1,0 +1,108 @@
+.login-info {
+  position: absolute;
+  left: -50px;
+  top: 30px;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 300px;
+  height: 370px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 3px 20px -6px rgba(0, 0, 0, 0.75);
+  font-size: 18px;
+
+  .login-info__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+
+    .login-info__avatar {
+      width: 80px;
+      height: 80px;
+
+      border: none;
+
+      background: url("../../../../assets/icons/avatar.svg") center no-repeat;
+      background-size: cover;
+      margin: 20px;
+    }
+
+    .login-info__user-name {
+      display: inline-block;
+      font-size: 22px;
+
+      color: #002eac;
+    }
+
+    .login-info__btn-login {
+      display: block;
+      margin: 20px;
+      padding: 10px 24px;
+      border: 0;
+      border-radius: 4px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: inherit;
+      line-height: inherit;
+      background: #0077cc;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.2s ease;
+
+      &:hover {
+        background-color: #c90570;
+      }
+
+      &:active {
+        transform: translate(1px, 1px);
+      }
+    }
+
+    .login-info__info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      .login-info__cart-info,
+      .login-info__favorite-info {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        height: 30px;
+        text-decoration: none;
+        cursor: pointer;
+
+        .login-info__cart-info-count,
+        .login-info__favorite-info-count {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          width: 1.5rem;
+          height: 1.5rem;
+
+          margin-left: 15px;
+          border-radius: 50%;
+          background-color: #0077cc;
+          color: white;
+          font-weight: 700;
+        }
+      }
+      .login-info__cart-info:hover,
+      .login-info__favorite-info:hover {
+        color: #c90570;
+      }
+
+      .login-info__cart-info:hover .login-info__cart-info-count,
+      .login-info__favorite-info:hover .login-info__favorite-info-count {
+        background-color: #c90570;
+      }
+    }
+  }
+}

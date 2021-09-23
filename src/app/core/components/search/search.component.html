@@ -1,0 +1,30 @@
+<div class="search-panel">
+  <button class="search-panel__icon-search"></button>
+  <input
+    class="search-panel__input-search"
+    type="text"
+    placeholder="What are you want to find out?"
+    [(ngModel)]="inputSearchText"
+    (keydown.enter)="clickBtnSearch()"
+    #searchInput
+  />
+  <button
+    *ngIf="inputSearchText"
+    class="search-panel__clear"
+    (click)="clearSearchText()"
+  ></button>
+  <div class="search-panel__search-menu" *ngIf="foods.length">
+    <a
+      class="search-panel__search-item"
+      *ngFor="let food of foods"
+      [routerLink]="['/food']"
+      [queryParams]="{
+        foodId: food.id,
+        categoryId: food.category,
+        subCategoryId: food.subCategory
+      }"
+      (click)="foods = []"
+      >{{ food.name }}
+    </a>
+  </div>
+</div>

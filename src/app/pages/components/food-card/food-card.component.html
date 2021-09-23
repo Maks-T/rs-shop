@@ -1,0 +1,54 @@
+<div class="card-food" *ngIf="isShow">
+  <img class="card-food__img" [src]="food.imageUrls[0]" />
+  <div class="card-food__name">
+    <a
+      [routerLink]="['/food']"
+      [queryParams]="{
+        foodId: food.id,
+        categoryId: categoryId,
+        subCategoryId: subCategoryId
+      }"
+      >{{ food.name }}</a
+    >
+  </div>
+  <div
+    class="card-food__availableAmount"
+    appAmountColor
+    [availableAmount]="food.availableAmount"
+  >
+    {{ food.availableAmount | amount }}
+  </div>
+  <div class="card-food__price">{{ food.price }}</div>
+  <div class="card-food__rating">
+    <div
+      class="card-food__rating-star"
+      *ngFor="let i of [].constructor(food.rating)"
+    ></div>
+  </div>
+  <button
+    class="btn-inCart"
+    (click)="addFoodToCart(food.id)"
+    *ngIf="!food.isInCart"
+  >
+    В корзину
+  </button>
+  <button
+    class="btn-inCart active"
+    (click)="deleteFoodFromCart(food.id)"
+    *ngIf="food.isInCart"
+  >
+    Удалить из корзины
+  </button>
+  <a
+    class="btn-inFavorite"
+    *ngIf="!food.isFavorite"
+    (click)="addFoodToFavorite(food.id)"
+    >Добавить в избранное</a
+  >
+  <a
+    class="btn-inFavorite"
+    *ngIf="food.isFavorite"
+    (click)="deleteFoodFromFavorite(food.id)"
+    >Удалить из избранного</a
+  >
+</div>

@@ -1,0 +1,64 @@
+<div class="subcategory">
+  <div class="subcategory-wrapper" *ngIf="category">
+    <div class="subcategory__menu">
+      <a
+        class="category-name"
+        [routerLink]="['/category']"
+        [queryParams]="{ categoryId: categoryId }"
+      >
+        {{ categoryName }}
+      </a>
+      <span> >> </span>
+      <a
+        class="subcategory-name"
+        [routerLink]="['/subcategory']"
+        [queryParams]="{ categoryId: categoryId, subCategoryId: subCategoryId }"
+      >
+        {{ subCategoryName }}
+      </a>
+    </div>
+
+    <div class="subcategory__filter-panel">
+      сортировать:
+      <a
+        class="subcategory__filter-panel-rating"
+        (click)="changeTypeSort(TypeSort.rating)"
+        [ngStyle]="{
+          textDecoration:
+            typeSort === TypeSort.ratingUp || typeSort === TypeSort.ratingDown
+              ? 'none'
+              : 'underline'
+        }"
+      >
+        популярности</a
+      >
+      <a
+        class="subcategory__filter-panel-price"
+        (click)="changeTypeSort(TypeSort.price)"
+        [ngStyle]="{
+          textDecoration:
+            typeSort === TypeSort.priceUp || typeSort === TypeSort.priceDown
+              ? 'none'
+              : 'underline'
+        }"
+      >
+        цене</a
+      >
+    </div>
+    <div class="foods-wrapper">
+      <app-food-card
+        *ngFor="let food of foods | filter: typeSort"
+        [food]="food"
+        [categoryId]="categoryId"
+        [subCategoryId]="subCategoryId"
+      ></app-food-card>
+    </div>
+    <button
+      class="btn-load-foods"
+      (click)="loadFoods()"
+      *ngIf="!loadFoodsComlete"
+    >
+      Загрузить еще
+    </button>
+  </div>
+</div>

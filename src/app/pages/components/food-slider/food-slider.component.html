@@ -1,0 +1,5 @@
+<ngb-carousel *ngIf="imageUrls">
+  <ng-template ngbSlide *ngFor="let image of imageUrls">
+    <img class="food-image" [src]="image" />
+  </ng-template>
+</ngb-carousel>
