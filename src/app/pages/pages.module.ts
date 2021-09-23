@@ -16,6 +16,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { AmountColorDirective } from './directives/amount-color.directive';
 import { MenuIcorDirective } from './directives/menu-icor.directive';
+import { OrderEditPageComponent } from './order-edit-page/order-edit-page.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MenuIcorDirective } from './directives/menu-icor.directive';
     OrderPageComponent,
     AmountColorDirective,
     MenuIcorDirective,
+    OrderEditPageComponent,
   ],
   imports: [
     CommonModule,
@@ -44,6 +46,7 @@ import { MenuIcorDirective } from './directives/menu-icor.directive';
       { path: 'food', component: FoodPageComponent },
       { path: 'favorite', component: FavoritePageComponent },
       { path: 'order', component: OrderPageComponent },
+      { path: 'orderedit/:id', component: OrderEditPageComponent },
     ]),
   ],
   exports: [RouterModule, AmountPipe],

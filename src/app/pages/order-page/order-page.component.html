@@ -1,6 +1,9 @@
 <div class="order-page">
   <div class="order-page__wrapper">
-    <div class="order-page__sides">
+    <p class="order-page__message-no" *ngIf="!orders.length">
+      Нет текущих заказов
+    </p>
+    <div class="order-page__sides" *ngIf="orders.length">
       <div class="order-page__sides-left">
         <ul>
           <li
@@ -16,7 +19,9 @@
               Желаемое время доставки : {{ order.details.timeToDeliver }}
             </div>
             <div>Комментарий к заказу : {{ order.details.comment }}</div>
-            <a class="btn-delete-order" (click)="deleteOrder(i)">удалить</a>
+            <a class="btn-delete-order" (click)="deleteOrder(order.id)"
+              >удалить</a
+            >
           </li>
         </ul>
       </div>
@@ -45,6 +50,10 @@
             <td>{{ food.price * currentOrder.items[inx].amount }}</td>
           </tr>
         </table>
+
+        <a class="btn-update" (click)="goToOrderEditPage(currentIndex)"
+          >Изменить</a
+        >
       </div>
     </div>
   </div>

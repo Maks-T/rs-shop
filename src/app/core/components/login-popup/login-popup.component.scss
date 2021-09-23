@@ -72,21 +72,6 @@
       transform: translate(1px, 1px);
     }
   }
-  mat-label {
-    font-size: 14px;
-    color: royalblue;
-  }
-  mat-form-field {
-    height: 60px;
-    width: 75%;
-    margin-top: 20px;
-  }
-
-  input {
-    border: 1px solid rgba($color: #3717eb, $alpha: 0.5);
-    line-height: 30px;
-    width: 100%;
-  }
 
   mat-error {
     color: red;

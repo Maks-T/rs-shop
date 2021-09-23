@@ -13,12 +13,15 @@
     justify-content: flex-start;
     flex-direction: column;
     flex-wrap: nowrap;
-    height: 600px;
+
     min-width: 941px;
     max-width: 1090px;
     margin: 0 auto;
     padding: 0 2.2%;
 
+    .order-page__message-no {
+      font-size: 24px;
+    }
     .order-title {
       margin-bottom: 10px;
       font-weight: bolder;
@@ -72,6 +75,37 @@
       background: rgba(229, 46, 107, 0.1);
 
       box-shadow: 4px 4px 4px 0px rgba(50, 50, 50, 0.13);
+    }
+
+    .btn-update {
+      display: inline-block;
+      align-self: flex-end;
+      width: 173px;
+      height: 40px;
+      margin-top: 30px;
+      margin-left: 30px;
+      line-height: 40px;
+      background: #0072bc;
+      font-weight: 500;
+      font-size: 16px;
+      border-radius: 4px;
+
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      outline: none;
+      border: 0;
+
+      transition: 0.2s ease;
+
+      &:hover {
+        background-color: #c90570;
+      }
+
+      &:active {
+        transform: translate(1px, 1px);
+      }
     }
   }
 }

@@ -21,7 +21,7 @@ export class OrderService {
     return this.http.post<string>(url, orderData, { headers });
   }
 
-  public deleteOrder(id: number): Observable<string> {
+  public deleteOrder(id: string): Observable<string> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.userService.getToken}`,
@@ -30,5 +30,16 @@ export class OrderService {
     const url = `http://localhost:3004/users/order?id=${id}`;
 
     return this.http.delete<string>(url, { headers });
+  }
+
+  public updateOrder(orderData: IOrder): Observable<string> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.userService.getToken}`,
+    });
+
+    const url = `http://localhost:3004/users/order`;
+
+    return this.http.put<string>(url, orderData, { headers });
   }
 }

@@ -1,6 +1,7 @@
 export interface IOrder {
   items: Item[];
   details: Details;
+  id?: string;
 }
 
 export interface Item {

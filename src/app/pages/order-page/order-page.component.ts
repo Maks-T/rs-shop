@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IFood } from 'src/app/core/models/food';
 import { IOrder } from 'src/app/core/models/order';
 import { IUserInfo } from 'src/app/core/models/user-info';
-import { CartService } from 'src/app/core/services/cart.service';
 import { CatalogService } from 'src/app/core/services/catalog.service';
 import { OrderService } from 'src/app/core/services/order.service';
 import { UserService } from 'src/app/core/services/user.service';
@@ -22,7 +22,8 @@ export class OrderPageComponent implements OnInit {
   constructor(
     private userService: UserService,
     private catalogService: CatalogService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -33,8 +34,13 @@ export class OrderPageComponent implements OnInit {
       this.orderSelect(this.currentOrder, 0);
     });
   }
-  deleteOrder(index: number) {
-    this.orderService.deleteOrder(index);
+  deleteOrder(id?: string) {
+    if (id) {
+      this.orderService.deleteOrder(id).subscribe(() => {
+        this.ngOnInit();
+        this.orders = this.orders.filter((order) => order.id !== id);
+      });
+    }
   }
   orderSelect(order: IOrder, index: number) {
     this.currentIndex = index;
@@ -53,5 +59,9 @@ export class OrderPageComponent implements OnInit {
     }
 
     return false;
+  }
+
+  goToOrderEditPage(id: number) {
+    this.router.navigate(['orderedit/', id]);
   }
 }
